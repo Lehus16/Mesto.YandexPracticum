@@ -1,0 +1,8 @@
+.profile__button_add {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  position: absolute;
+  padding: 0;
+  right: 0;
+}

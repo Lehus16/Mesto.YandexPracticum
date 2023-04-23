@@ -1,0 +1,9 @@
+.header {
+  max-width: 880px;
+  margin: 45px auto 40px;
+  min-height: 74px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
