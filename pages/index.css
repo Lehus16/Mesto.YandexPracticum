@@ -15,4 +15,12 @@
 @import url(/blocks/profile/__paragraph/profile__paragraph.css);
 @import url(/blocks/profile/__button/_edit/profile__button_edit.css);
 @import url(/blocks/profile/__button/_add/profile__button_add.css);
+/* ELEMENTS */
+@import url(/blocks/elements/elements.css);
+@import url(/blocks/element/element.css);
+@import url(/blocks/element/__footer/element__footer.css);
+@import url(/blocks/element/__image/element__image.css);
+@import url(/blocks/element/__paragraph/element____paragraph.css);
+@import url(/blocks/element/__button/element__button.css);
+
 
