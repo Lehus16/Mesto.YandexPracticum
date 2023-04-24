@@ -22,5 +22,7 @@
 @import url(/blocks/element/__image/element__image.css);
 @import url(/blocks/element/__paragraph/element____paragraph.css);
 @import url(/blocks/element/__button/element__button.css);
-
+/* FOOTER */
+@import url(/blocks/footer/footer.css);
+@import url(/blocks/footer/__copyright/footer__copyright.css);
 

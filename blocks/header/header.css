@@ -1,5 +1,5 @@
 .header {
-  max-width: 880px;
+  max-width: calc(100% - 400px);
   margin: 45px auto 40px;
   min-height: 74px;
   display: flex;

@@ -1,9 +1,9 @@
 .elements {
-  max-width: 880px;
+  max-width: calc(100% - 400px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(282px, 1fr));
-  grid-template-rows: repeat(2, minmax(361px, 1fr));
+  grid-template-columns: repeat(3, minmax(200px, 282px));
+  grid-template-rows: repeat(2, minmax(200px, 361px));
   gap: 17px;
 }
 
