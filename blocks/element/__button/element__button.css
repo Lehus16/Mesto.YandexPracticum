@@ -1,6 +1,16 @@
 .element__button {
   border: none;
-  background-color: inherit;
+  background-color: initial;
   cursor: pointer;
   padding: 0;
 }
+
+.element__button:hover {
+  opacity: .5;
+}
+
+.element__button:active {
+  background-color: black;
+}
+
+

@@ -1,0 +1,24 @@
+.popup__form-window {
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 3;
+  position: fixed;
+  margin-top: 195px;
+}
+
+
+@media screen and (max-width: 550px ) {
+  .popup__form-window {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 425px ) {
+  .popup__form-window {
+    width: 282px;
+    height: 322px;
+  }
+}

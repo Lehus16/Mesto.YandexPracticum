@@ -1,8 +1,13 @@
 .element__footer {
-  margin: 0 auto;
-  max-width: 240px;
-  height: 20%;
+  margin: 25px 30px 32px 21px;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 1170px) {
+  .element__footer {
+    margin: 15px 20px 22px 11px;
+  }
 }

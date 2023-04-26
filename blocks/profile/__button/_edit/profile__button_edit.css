@@ -6,4 +6,15 @@
   cursor: pointer;
   margin-left: 18px;
   padding: 0;
+  font-size: 24px;
+}
+
+.profile__button_edit:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__button_edit {
+    margin: 0;
+  }
 }

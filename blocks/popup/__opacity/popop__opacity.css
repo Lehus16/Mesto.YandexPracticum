@@ -1,0 +1,8 @@
+.popop__opacity {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000000;
+  opacity: .5;
+}

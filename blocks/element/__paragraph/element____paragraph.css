@@ -8,3 +8,23 @@
   text-overflow: ellipsis;
   margin: 0;
 }
+
+
+@media screen and (max-width: 1024px) {
+  .element__paragraph {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .element__paragraph {
+    font-size: 22px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .element__paragraph {
+    font-size: 24px;
+  }
+}

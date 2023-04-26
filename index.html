@@ -9,12 +9,12 @@
   </head>
   <body class="page">
     <header class="header">
-      <img src="images/Logo.svg" alt="логотип" />
+      <img class="header__logo" src="images/Logo.svg" alt="логотип" />
       <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
-        <img
+          <img
           class="profile__image"
           src="/images/Kusto.jpg"
           alt="Фотография Кусто"
@@ -36,7 +36,7 @@
             <figcaption class="element__footer">
               <p class="element__paragraph">Карачаевск</p>
               <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+                <img class="aaa" src="images/Like.svg" alt="" />
               </button>
             </figcaption>
           </figure>
@@ -90,7 +90,18 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <section class="popup"></section>
+    <section class="popup popup_hidden">
+      <div class="popop__opacity"></div>
+        <div class="popup__form-window">
+          <div class="popup__form-container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__form popup__form_name" placeholder="" type="text" name="" id="">
+            <input class="popup__form popup__form_occupation" value="" type="text" name="" id="">
+            <button class="popup__button_save">Сохранить</button>
+          </div>
+        <button class="popup__button_close"><img src="images/Close Icon.svg" alt=""></button>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>

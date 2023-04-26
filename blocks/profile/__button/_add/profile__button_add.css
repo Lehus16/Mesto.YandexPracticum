@@ -1,8 +1,20 @@
 .profile__button_add {
-  border: none;
   background-color: inherit;
   cursor: pointer;
-  position: absolute;
   padding: 0;
-  right: 0;
+  min-height: 50px;
+  width: 150px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.profile__button_add:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__button_add {
+    width: 100%;
+  }
 }

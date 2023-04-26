@@ -2,6 +2,31 @@
   max-width: calc(100% - 400px);
   margin: 0 auto 51px;
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
   position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    max-width: calc(100% - 200px);
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    max-width: calc(100% - 100px);
+
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .profile {
+    max-width: calc(100% - 38px);
+    margin: 0 auto 36px;
+  }
 }

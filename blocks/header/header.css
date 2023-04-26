@@ -7,3 +7,23 @@
   align-items: flex-start;
 }
 
+@media screen and (max-width: 1024px) {
+  .header {
+    max-width: calc(100% - 200px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    max-width: calc(100% - 100px);
+
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .header {
+    max-width: 100%;
+    margin: 28px 0 38px;
+
+  }
+}
