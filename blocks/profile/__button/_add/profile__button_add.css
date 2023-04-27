@@ -7,14 +7,17 @@
   border: 2px solid #fff;
   box-sizing: border-box;
   border-radius: 2px;
+  position: absolute;
+  right: 0;
 }
 
 .profile__button_add:hover {
   opacity: .6;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .profile__button_add {
     width: 100%;
+    position: relative;
   }
 }

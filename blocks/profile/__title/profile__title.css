@@ -2,7 +2,7 @@
   font-size: 42px;
   line-height: 1.14;
   font-weight: 500;
-  margin: 0 0 10px 0;
+  margin: 0 0 7px 0;
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -10,7 +10,7 @@
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .profile__title {
     width: 80%;
     text-align: center;
@@ -20,6 +20,7 @@
 
 @media screen and (max-width: 590px) {
   .profile__title {
+    width: 90%;
     font-size: 27px;
     line-height: 1.2;
   }

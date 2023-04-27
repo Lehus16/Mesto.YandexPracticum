@@ -8,7 +8,7 @@
   text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .profile__paragraph {
     width: 100%;
     text-align: center;
