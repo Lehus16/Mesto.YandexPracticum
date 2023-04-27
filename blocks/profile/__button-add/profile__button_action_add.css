@@ -1,4 +1,4 @@
-.profile__button_action_add {
+.profile__button-add {
   background-color: inherit;
   cursor: pointer;
   padding: 0;
@@ -11,12 +11,12 @@
   right: 0;
 }
 
-.profile__button_action_add:hover {
+.profile__button-add:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 1050px) {
-  .profile__button_action_add {
+  .profile__button-add {
     width: 100%;
     position: relative;
   }
