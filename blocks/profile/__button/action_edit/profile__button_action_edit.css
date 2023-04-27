@@ -1,4 +1,4 @@
-.profile__button_edit {
+.profile__button_action_edit {
   background-color: inherit;
   border: none;
   width: 24px;
@@ -9,12 +9,12 @@
   font-size: 24px;
 }
 
-.profile__button_edit:hover {
+.profile__button_action_edit:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 1050px) {
-  .profile__button_edit {
+  .profile__button_action_edit {
     margin: 0;
   }
 }
