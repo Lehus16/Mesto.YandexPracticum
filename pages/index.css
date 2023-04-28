@@ -4,7 +4,6 @@
 
 /* HEADER  */
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
 /* PROFILE */
@@ -28,8 +27,7 @@
 /* POPUP */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_hidden/popup_hidden.css);
-@import url(../blocks/popup/__form-window/popup__form-window.css);
-@import url(../blocks/popup/__background/popup__background.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/__button-close/popup__button-close.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__form-container/popup__form-container.css);

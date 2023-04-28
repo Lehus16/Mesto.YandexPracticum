@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
       <img class="header__logo" src="images/Logo.svg" alt="логотип" />
-      <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
@@ -21,67 +20,59 @@
         />
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__button-edit">
-            <img src="images/Edit Button.svg" alt="Изменение профиля" />
+          <button type="button" class="profile__button-edit">
           </button>
           <p class="profile__paragraph">Исследователь океана</p>
         </div>
-        <button class="profile__button-add">
-          <img src="images/Add Button.svg" alt="Добавление фотографии" />
+        <button type="button" class="profile__button-add">
         </button>
       </section>
       <section class="elements">
           <figure class="element">
             <img src="images/Karachaevsk.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Карачаевск</p>
-              <button class="element__button">
-                <img class="aaa" src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Карачаевск</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
             <img src="images/Elbrus.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Гора Эльбрус</p>
-              <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Гора Эльбрус</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
             <img src="images/Dombay.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Домбай</p>
-              <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Домбай</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
             <img src="images/Karachaevsk.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Гора Эльбрус</p>
-              <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Гора Эльбрус</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
             <img src="images/Elbrus.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Домбай</p>
-              <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Домбай</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
             <img src="images/Dombay.jpg" alt="" class="element__image" />
             <figcaption class="element__footer">
-              <p class="element__paragraph">Карачаево-Черкесия</p>
-              <button class="element__button">
-                <img src="images/Like.svg" alt="" />
+              <h3 class="element__paragraph">Карачаево-Черкесия</h3>
+              <button type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
@@ -90,18 +81,16 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <section class="popup popup_hidden">
-      <div class="popup__background"></div>
-        <div class="popup__form-window">
-          <div class="popup__form-container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__form popup__form_name" placeholder="Имя" type="text" name="" id="">
-            <input class="popup__form popup__form_occupation" placeholder="О себе" value="" type="text" name="" id="">
-            <button class="popup__button-save">Сохранить</button>
-          </div>
-        <button class="popup__button-close"><img src="images/Close Icon.svg" alt=""></button>
-      </div>
-    </section>
-    <script src="script.js"></script>
+    <div class="popup popup_hidden">
+        <div class="popup__overlay"></div>
+        <form name="popup" class="popup__form-container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input required class="popup__form popup__name" placeholder="Имя" type="text" name="popup" >
+          <input required class="popup__form popup__occupation" placeholder="О себе" type="text" name="popup">
+          <button type="submit" class="popup__button-save">Сохранить</button>
+          <button type="button" class="popup__button-close"></button>
+        </form>
+    </div>
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

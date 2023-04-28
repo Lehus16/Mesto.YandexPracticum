@@ -1,19 +1,16 @@
 .profile {
   max-width: calc(100% - 400px);
   margin: 0 auto 51px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 120px 1fr 150px;
   align-items: center;
-  position: relative;
 }
 
 @media screen and (max-width: 1050px) {
   .profile {
     max-width: calc(100% - 200px);
-    flex-direction: column;
-    flex-wrap: nowrap;
-    text-align: center;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 

@@ -1,5 +1,8 @@
 .profile__button-edit {
   background-color: inherit;
+  background-image: url(/images/EditButton.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
   border: none;
   width: 24px;
   height: 24px;
@@ -16,5 +19,13 @@
 @media screen and (max-width: 1050px) {
   .profile__button-edit {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__button-edit {
+    background-image: url(/images/EditButton_75.svg);
+    width: 18px;
+    height: 18px;
   }
 }

@@ -1,5 +1,6 @@
 .popup__button-save {
-  width: 100%;
+  width: 358px;
+  margin: 0 auto;
   min-height: 50px;
   padding: 0;
   border: none;
@@ -15,8 +16,10 @@
   opacity: .8;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 550px) {
   .popup__button-save {
+    min-height: 46px;
+    width: 238px;
     font-size: 14px;
   }
 }

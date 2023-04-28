@@ -1,12 +1,10 @@
 .profile__info {
   display: flex;
-  /* max-width: 450px; */
+  max-width: 500px;
   flex-wrap: wrap;
   align-items: center;
   margin-left: 30px;
-  /* overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; */
+
 }
 
 

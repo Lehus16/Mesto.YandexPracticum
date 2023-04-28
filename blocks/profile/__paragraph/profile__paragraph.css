@@ -2,7 +2,7 @@
   font-size: 18px;
   line-height: 1.22;
   margin: 0;
-  width: 100%;
+  width: 500px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -10,9 +10,7 @@
 
 @media screen and (max-width: 1050px) {
   .profile__paragraph {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 36px;
+    margin: 0 auto 36px;
   }
 }
 

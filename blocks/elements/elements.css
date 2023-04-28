@@ -3,7 +3,6 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-  grid-template-rows: repeat(2, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -11,7 +10,6 @@
   .elements {
     max-width: calc(100% - 200px);
     grid-template-columns: repeat(2, minmax(150px, 1fr));
-    grid-template-rows: repeat(3, minmax(200px, 1fr));
   }
 }
 
