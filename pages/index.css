@@ -27,7 +27,6 @@
 /* POPUP */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_hidden/popup_hidden.css);
-@import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/__button-close/popup__button-close.css);
 @import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__form/popup__form.css);

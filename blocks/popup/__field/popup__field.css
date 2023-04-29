@@ -25,6 +25,12 @@
   .popup__field {
     width: 238px;
     min-height: 30px;
+    margin-top: 70px;
+
+  }
+  .popup__field:last-of-type {
+    margin-bottom: 45px;
+    margin-top: 27px;
   }
 
 }

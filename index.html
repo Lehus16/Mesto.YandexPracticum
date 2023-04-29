@@ -82,12 +82,11 @@
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
     <div class="popup popup_hidden">
-        <div class="popup__overlay"></div>
         <div class="popup__window">
           <form name="popup" class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input required class="popup__field popup__field_type_name" placeholder="Имя" type="text" name="popup">
-          <input required class="popup__field popup__field_type_occupation" placeholder="О себе" type="text" name="popup">
+          <input required class="popup__field popup__field_type_name" placeholder="Имя" type="text" name="popup__form-name">
+          <input required class="popup__field popup__field_type_occupation" placeholder="О себе" type="text" name="popup__form-occupation">
           <button aria-label="Сохранить" type="submit" class="popup__button-save">Сохранить</button>
           </form>
           <button aria-label="Закрыть окно редактирования" type="button" class="popup__button-close"></button>

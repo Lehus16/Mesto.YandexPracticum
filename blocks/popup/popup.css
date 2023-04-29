@@ -7,9 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: black;
-  opacity: .5; */
-  /* Не понимаю как мне сделать opacity чтобы при этом форма не наследовала его */
+  background-color: rgba(0, 0, 0, .5);
+  /* СПАСИБО! Как я не догадался... */
 }
 
 
