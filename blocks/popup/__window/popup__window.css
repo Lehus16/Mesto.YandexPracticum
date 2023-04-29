@@ -1,0 +1,22 @@
+.popup__window {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  width: 430px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 3;
+  position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__window {
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .popup__window {
+    width: 282px;
+  }
+}

@@ -1,5 +1,5 @@
 .element__footer {
-  margin: 20px 15px 25px 21px;
+  margin: 20px 18px 25px 21px;
   max-width: 246px;
   display: flex;
   justify-content: space-between;
@@ -9,5 +9,12 @@
 @media screen and (max-width: 1170px) {
   .element__footer {
     margin: 12px 10px 17px 11px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .element__footer {
+    margin: 21px 25px 15px 31px;
   }
 }

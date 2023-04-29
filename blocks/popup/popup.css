@@ -6,7 +6,10 @@
   left: 0;
   display: flex;
   justify-content: center;
-
+  align-items: center;
+  /* background-color: black;
+  opacity: .5; */
+  /* Не понимаю как мне сделать opacity чтобы при этом форма не наследовала его */
 }
 
 

@@ -14,7 +14,7 @@
   .profile__title {
     width: 80%;
     text-align: center;
-    margin: 26px 0 14px;
+    margin: 26px auto 14px;
   }
 }
 

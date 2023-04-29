@@ -1,26 +1,6 @@
 .popup__form {
-  width: 358px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 0 auto;
-  min-height: 45px;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0,.2);
-  box-sizing: border-box;
-  font-size: 14px;
-  line-height: 1.1;
 }
-
-.popup__form:focus {
-  border: 3px solid rgba(0, 100, 200, .7);
-  border-radius: 2px;
-  outline: none;
-}
-
-@media screen and (max-width: 550px) {
-  .popup__form {
-    width: 238px;
-    min-height: 30px;
-  }
-
-}
-

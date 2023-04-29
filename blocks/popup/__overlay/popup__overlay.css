@@ -2,6 +2,8 @@
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: .6;
+  opacity: .5;
   position: absolute;
+  z-index: 2;
 }
+/* Не понимаю как мне сделать opacity чтобы при этом форма не наследовала его */

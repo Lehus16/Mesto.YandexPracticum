@@ -20,59 +20,59 @@
         />
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__button-edit">
+          <button aria-label="Редактировать профиль" type="button" class="profile__button-edit">
           </button>
           <p class="profile__paragraph">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__button-add">
+        <button aria-label="Добавить фотографию" type="button" class="profile__button-add">
         </button>
       </section>
       <section class="elements">
           <figure class="element">
-            <img src="images/Karachaevsk.jpg" alt="" class="element__image" />
+            <img src="images/Karachaevsk.jpg" alt="Карачаевск" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Карачаевск</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
-            <img src="images/Elbrus.jpg" alt="" class="element__image" />
+            <img src="images/Elbrus.jpg" alt="Эльбрус" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Гора Эльбрус</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
-            <img src="images/Dombay.jpg" alt="" class="element__image" />
+            <img src="images/Dombay.jpg" alt="Домбай" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Домбай</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
-            <img src="images/Karachaevsk.jpg" alt="" class="element__image" />
+            <img src="images/Karachaevsk.jpg" alt="Эльбрус" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Гора Эльбрус</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
-            <img src="images/Elbrus.jpg" alt="" class="element__image" />
+            <img src="images/Elbrus.jpg" alt="Домбай" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Домбай</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
           <figure class="element">
-            <img src="images/Dombay.jpg" alt="" class="element__image" />
+            <img src="images/Dombay.jpg" alt="Карачаево-Черкесия" class="element__image" />
             <figcaption class="element__footer">
               <h3 class="element__paragraph">Карачаево-Черкесия</h3>
-              <button type="button" class="element__button">
+              <button aria-label="Поставить лайк" type="button" class="element__button">
               </button>
             </figcaption>
           </figure>
@@ -83,13 +83,15 @@
     </footer>
     <div class="popup popup_hidden">
         <div class="popup__overlay"></div>
-        <form name="popup" class="popup__form-container">
+        <div class="popup__window">
+          <form name="popup" class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input required class="popup__form popup__name" placeholder="Имя" type="text" name="popup" >
-          <input required class="popup__form popup__occupation" placeholder="О себе" type="text" name="popup">
-          <button type="submit" class="popup__button-save">Сохранить</button>
-          <button type="button" class="popup__button-close"></button>
-        </form>
+          <input required class="popup__field popup__field_type_name" placeholder="Имя" type="text" name="popup">
+          <input required class="popup__field popup__field_type_occupation" placeholder="О себе" type="text" name="popup">
+          <button aria-label="Сохранить" type="submit" class="popup__button-save">Сохранить</button>
+          </form>
+          <button aria-label="Закрыть окно редактирования" type="button" class="popup__button-close"></button>
+        </div>
     </div>
     <script src="./scripts/script.js"></script>
   </body>
