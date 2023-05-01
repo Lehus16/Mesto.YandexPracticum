@@ -3,17 +3,26 @@
   line-height: 1.14;
   font-weight: 500;
   margin: 0 0 7px 0;
-  width: calc(100% - 42px);
+  max-width: 294px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
+@media screen and (max-width: 1050px) {
+  .profile__title {
+    max-width: calc(100% - 50px);
+
+  }
+}
+
 
 @media screen and (max-width: 590px) {
   .profile__title {
-    max-width: 350px;
+    max-width: 189px;
     font-size: 27px;
     line-height: 1.2;
+    margin: 0 0 10px 46px;
+
   }
 }
