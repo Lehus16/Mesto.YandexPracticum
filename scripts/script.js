@@ -47,6 +47,8 @@ const formName = document.querySelector('.popup__field_type_name');
 const currentOccupation = document.querySelector('.profile__paragraph');
 const formOccupation = document.querySelector('.popup__field_type_occupation');
 const editPopupForm = document.querySelector('.popup-edit__form');
+const formPhotoUrl = document.querySelector('.popup__field_type_photo-url');
+const currentPhoto = document.querySelector('.profile__image');
 
 // Popup добавления картинки
 const addButton = document.querySelector('.profile__button-add');
@@ -66,6 +68,8 @@ const handleFormSubmit = function (evt) {
   evt.preventDefault();
   currentName.textContent = formName.value;
   currentOccupation.textContent = formOccupation.value;
+  currentPhoto.src = formPhotoUrl.value;
+  formPhotoUrl.value = '';
   popupVisible();
 };
 // Submit с именем и родом деятельности.
@@ -75,6 +79,7 @@ editButton.addEventListener('click', function () {
   popupVisible();
   formName.value = currentName.textContent;
   formOccupation.value = currentOccupation.textContent;
+  formPhotoUrl.value = currentPhoto.src;
 });
 // Закрытие popup.
 closeButtonPopupEdit.addEventListener('click', popupVisible);
