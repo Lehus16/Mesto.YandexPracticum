@@ -36,12 +36,10 @@
       <section class="elements">
         <figure class="element">
           <img
-            src="images/Karachaevsk.jpg"
-            alt="Карачаевск"
             class="element__image"
           />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Карачаевск</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -50,9 +48,9 @@
           </figcaption>
         </figure>
         <figure class="element">
-          <img src="images/Elbrus.jpg" alt="Эльбрус" class="element__image" />
+          <img class="element__image" />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Гора Эльбрус</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -61,9 +59,9 @@
           </figcaption>
         </figure>
         <figure class="element">
-          <img src="images/Dombay.jpg" alt="Домбай" class="element__image" />
+          <img class="element__image" />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Домбай</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -73,12 +71,10 @@
         </figure>
         <figure class="element">
           <img
-            src="images/Karachaevsk.jpg"
-            alt="Эльбрус"
             class="element__image"
           />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Гора Эльбрус</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -87,9 +83,9 @@
           </figcaption>
         </figure>
         <figure class="element">
-          <img src="images/Elbrus.jpg" alt="Домбай" class="element__image" />
+          <img class="element__image" />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Домбай</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -99,12 +95,10 @@
         </figure>
         <figure class="element">
           <img
-            src="images/Dombay.jpg"
-            alt="Карачаево-Черкесия"
             class="element__image"
           />
           <figcaption class="element__footer">
-            <h3 class="element__paragraph">Карачаево-Черкесия</h3>
+            <h3 class="element__paragraph"></h3>
             <button
               aria-label="Поставить лайк"
               type="button"
@@ -117,28 +111,28 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <div class="popup popup_hidden">
+    <div class="popup popup-edit popup_hidden">
       <div class="popup__window">
-        <form name="popup" class="popup__form">
+        <form name="popup-edit" class=" popup__form popup-edit__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             required
             class="popup__field popup__field_type_name"
             placeholder="Имя"
             type="text"
-            name="popup__form-name"
+            name="popup__form_type_name"
           />
           <input
             required
             class="popup__field popup__field_type_occupation"
             placeholder="О себе"
             type="text"
-            name="popup__form-occupation"
+            name="popup__form_type_occupation"
           />
           <button
             aria-label="Сохранить"
             type="submit"
-            class="popup__button-save"
+            class="popup__button popup__button-save"
           >
             Сохранить
           </button>
@@ -146,10 +140,58 @@
         <button
           aria-label="Закрыть окно редактирования"
           type="button"
-          class="popup__button-close"
+          class="popup-edit__button-close popup__button-close"
         ></button>
       </div>
     </div>
+    <div class="popup popup-add popup_hidden">
+      <div class="popup__window">
+        <form name="popup-add" class="popup__form popup-add__form">
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            required
+            class="popup__field popup__field_type_place-name"
+            placeholder="Название"
+            type="text"
+            name="popup__form_type_place-name"
+          />
+          <input
+            required
+            class="popup__field popup__field_type_url"
+            placeholder="Ссылка на картинку"
+            type="text"
+            name="popup__form_type_url"
+          />
+          <button
+            aria-label="Создать"
+            type="submit"
+            class="popup__button popup__button-make"
+          >
+            Создать
+          </button>
+        </form>
+        <button
+          aria-label="Закрыть окно редактирования"
+          type="button"
+          class="popup-add__button-close popup__button-close"
+        ></button>
+      </div>
+    </div>
+    <template id="element">
+      <figure class="element">
+        <img
+          class="element__image"
+        />
+        <figcaption class="element__footer">
+          <h3 class="element__paragraph"></h3>
+          <button
+            aria-label="Поставить лайк"
+            type="button"
+            class="element__button"
+          ></button>
+        </figcaption>
+      </figure>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
