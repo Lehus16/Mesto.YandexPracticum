@@ -28,12 +28,16 @@ const initialCards = [
 const elements = document.querySelector('.elements');
 const elementImages = document.querySelectorAll('.element__image');
 const elementParagraphs = document.querySelectorAll('.element__paragraph');
+const elementButtons = document.querySelectorAll('.element__button');
 // Загрузка карточек из массива объектов(базы данных). Реализовал циклом(?) через отдельную функцию, чтобы можно было вызывать её в других функциях при необходимости. Если в перспективе повторное использование не понадобиться можно переделать на IIFE.
 const displayElements = function () {
   for (let i = 0; i < elementImages.length; i++) {
     elementImages[i].setAttribute('src', initialCards[i].link);
     elementImages[i].setAttribute('alt', initialCards[i].name);
     elementParagraphs[i].textContent = initialCards[i].name;
+    elementButtons[i].addEventListener('click', function (e) {
+      elementButtons[i].style.background = 'url("images/BlackLike.svg")';
+    });
   }
 }
 displayElements();
@@ -47,8 +51,6 @@ const formName = document.querySelector('.popup__field_type_name');
 const currentOccupation = document.querySelector('.profile__paragraph');
 const formOccupation = document.querySelector('.popup__field_type_occupation');
 const editPopupForm = document.querySelector('.popup-edit__form');
-const formPhotoUrl = document.querySelector('.popup__field_type_photo-url');
-const currentPhoto = document.querySelector('.profile__image');
 
 // Popup добавления картинки
 const addButton = document.querySelector('.profile__button-add');
@@ -68,8 +70,6 @@ const handleFormSubmit = function (evt) {
   evt.preventDefault();
   currentName.textContent = formName.value;
   currentOccupation.textContent = formOccupation.value;
-  currentPhoto.src = formPhotoUrl.value;
-  formPhotoUrl.value = '';
   popupVisible();
 };
 // Submit с именем и родом деятельности.
@@ -79,7 +79,6 @@ editButton.addEventListener('click', function () {
   popupVisible();
   formName.value = currentName.textContent;
   formOccupation.value = currentOccupation.textContent;
-  formPhotoUrl.value = currentPhoto.src;
 });
 // Закрытие popup.
 closeButtonPopupEdit.addEventListener('click', popupVisible);
@@ -100,6 +99,9 @@ const handleAddFormSubmit = function (evt) {
   newElement.querySelector('.element__image').src = `${formUrl.value}`;
   newElement.querySelector('.element__image').alt = `${formPlaceName.value}`;
   newElement.querySelector('.element__paragraph').textContent = `${formPlaceName.value}`;
+  newElement.querySelector('.element__button').addEventListener('click', function (){
+    newElement.querySelector('.element__button').style.background = 'url("images/BlackLike.svg")'
+  });
   elements.prepend(newElement);
   addPopupVisible();
   formPlaceName.value = '';
