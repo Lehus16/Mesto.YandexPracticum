@@ -45,19 +45,19 @@ const addNewElement = function (elem, index, array) {
   newElementPopupImage.alt = elem.name;
   newElementPopupParagraph.textContent = elem.name;
   newElementParagraph.textContent = elem.name;
-
+  const displayPopup = function () {
+    newElementPopup.classList.toggle('popup_hidden');
+  }
   newElementButton.addEventListener('click', function () {
     newElementButton.style.background = 'url("images/BlackLike.svg")';
   });
   newElementButtonTrash.addEventListener('click', function (e) {
     newElement.remove();
   });
-  newElementImage.addEventListener('click', function () {
-    newElementPopup.classList.toggle('popup_hidden');
-  })
-  newElementButtonClose.addEventListener('click', function () {
-    newElementPopup.classList.toggle('popup_hidden');
-  })
+  newElementImage.addEventListener('click', displayPopup);
+  newElementPopup.addEventListener('click', displayPopup);
+  // Я не уверен, но как-будто бы удобнее когда можно нажать в любую точку экрана и попап с картинкой закроется
+  // newElementButtonClose.addEventListener('click', displayPopup);
   elements.prepend(newElement);
 };
 initialCards.map(addNewElement);
