@@ -27,31 +27,47 @@ const initialCards = [
 
 // ELEMENTS
 const elements = document.querySelector('.elements');
-const elementImages = document.querySelectorAll('.element__image');
-const elementParagraphs = document.querySelectorAll('.element__paragraph');
-const elementButtons = document.querySelectorAll('.element__button');
 // Загрузка карточек из массива объектов(базы данных).
-    const addNewElement = function (elem, index, array) {
-      const templateElement = document.querySelector('#element').content;
-      const newElement = templateElement.querySelector('.element').cloneNode(true);
-      const newElementImage = newElement.querySelector('.element__image');
-      const newElementParagraph = newElement.querySelector('.element__paragraph');
-      const newElementButton = newElement.querySelector('.element__button');
-      newElementImage.src = elem.link;
-      newElementImage.alt = elem.name;
-      newElementParagraph.textContent = elem.name;
-      newElementButton.addEventListener('click', function() {
-        newElementButton.style.background = 'url("images/BlackLike.svg")';
-    })
-    elements.append(newElement);
-// Хотел сделать функцию, которую вызвал бы в обработчике события при добавлении новой картинки, но отличается append и prepend.
-  }
-    initialCards.forEach(addNewElement);
+const addNewElement = function (elem, index, array) {
+  const templateElement = document.querySelector('#element').content;
+  const newElement = templateElement.querySelector('.element').cloneNode(true);
+  const newElementImage = newElement.querySelector('.element__image');
+  const newElementParagraph = newElement.querySelector('.element__paragraph');
+  const newElementButton = newElement.querySelector('.element__button');
+  const newElementButtonTrash = newElement.querySelector('.element__trash');
+  const newElementPopup = newElement.querySelector('.element__popup');
+  const newElementPopupImage = newElement.querySelector('.element__popup-image');
+  const newElementPopupParagraph = newElement.querySelector('.element__popup-paragraph');
+  const newElementButtonClose = newElement.querySelector('.element__button-close');
+  newElementImage.src = elem.link;
+  newElementImage.alt = elem.name;
+  newElementPopupImage.src = elem.link;
+  newElementPopupImage.alt = elem.name;
+  newElementPopupParagraph.textContent = elem.name;
+  newElementParagraph.textContent = elem.name;
+
+  newElementButton.addEventListener('click', function () {
+    newElementButton.style.background = 'url("images/BlackLike.svg")';
+  });
+  newElementButtonTrash.addEventListener('click', function (e) {
+    newElement.remove();
+  });
+  newElementImage.addEventListener('click', function () {
+    newElementPopup.classList.toggle('popup_hidden');
+  })
+  newElementButtonClose.addEventListener('click', function () {
+    newElementPopup.classList.toggle('popup_hidden');
+  })
+  elements.prepend(newElement);
+};
+initialCards.map(addNewElement);
 
 // Popup редактирования имени и рода деятельности.
 const popupEdit = document.querySelector('.popup-edit');
 const editButton = document.querySelector('.profile__button-edit');
-const closeButtonPopupEdit = document.querySelector('.popup-edit__button-close');
+const closeButtonPopupEdit = document.querySelector(
+  '.popup-edit__button-close'
+);
 const currentName = document.querySelector('.profile__title');
 const formName = document.querySelector('.popup__field_type_name');
 const currentOccupation = document.querySelector('.profile__paragraph');
@@ -89,8 +105,6 @@ editButton.addEventListener('click', function () {
 // Закрытие popup.
 closeButtonPopupEdit.addEventListener('click', popupVisible);
 
-
-
 // Открытие/закрытие popup добавление картинки.
 const addPopupVisible = function () {
   popupAdd.classList.toggle('popup_hidden');
@@ -100,25 +114,12 @@ addButton.addEventListener('click', addPopupVisible);
 // Callback для добавления нового элемента
 const handleAddFormSubmit = function (evt) {
   evt.preventDefault();
-  initialCards.unshift({name: formPlaceName.value, link: formUrl.value});
-  const templateElement = document.querySelector('#element').content;
-  const newElement = templateElement.querySelector('.element').cloneNode(true);
-  const newElementImage = newElement.querySelector('.element__image');
-  const newElementParagraph = newElement.querySelector('.element__paragraph');
-  const newElementButton = newElement.querySelector('.element__button');
-  newElementImage.src = initialCards[0].link;
-  newElementImage.alt = initialCards[0].name;
-  newElementParagraph.textContent = initialCards[0].name;
-  newElementButton.addEventListener('click', function() {
-  newElementButton.style.background = 'url("images/BlackLike.svg")';
-    })
-  elements.prepend(newElement);
+  initialCards.push({ name: formPlaceName.value, link: formUrl.value });
+  addNewElement(initialCards[initialCards.length - 1]);
   addPopupVisible();
   formPlaceName.value = '';
   formUrl.value = '';
-  console.log(initialCards);
-}
-
+};
 
 // Добавление нового элемента.
 addPopupForm.addEventListener('submit', handleAddFormSubmit);

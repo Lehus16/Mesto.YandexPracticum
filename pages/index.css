@@ -21,6 +21,11 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__paragraph/element____paragraph.css);
 @import url(../blocks/element/__button/element__button.css);
+@import url(../blocks/element/__trash/element__trash.css);
+@import url(../blocks/element/__popup/element__popup.css);
+@import url(../blocks/element/__popup-image/element__popup-image.css);
+@import url(../blocks/element/__popup-paragraph/element__popup-paragraph.css);
+@import url(../blocks/element/__popup-container/element__popup-container.css);
 /* FOOTER */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

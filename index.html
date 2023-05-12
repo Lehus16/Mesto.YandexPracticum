@@ -15,17 +15,17 @@
       <section class="profile">
         <img
           class="profile__image"
-          src="images/Kusto.jpg"
+          src="images/Zeus.jpg"
           alt="Фотография Кусто"
         />
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <h1 class="profile__title">Зевс</h1>
           <button
             aria-label="Редактировать профиль"
             type="button"
             class="profile__button-edit"
           ></button>
-          <p class="profile__paragraph">Исследователь океана</p>
+          <p class="profile__paragraph">Абиссинский кот</p>
         </div>
         <button
           aria-label="Добавить фотографию"
@@ -108,6 +108,7 @@
     </div>
     <template id="element">
       <figure class="element">
+        <button class="element__trash"></button>
         <img class="element__image" />
         <figcaption class="element__footer">
           <h3 class="element__paragraph"></h3>
@@ -117,6 +118,13 @@
             class="element__button"
           ></button>
         </figcaption>
+        <div class="element__popup popup_hidden">
+          <figure class="element__popup-container">
+            <img class="element__popup-image">
+            <figcaption><p class="element__popup-paragraph"></p></figcaption>
+            <button class="popup__button-close element__button-close"></button>
+          </figure>
+        </div>
       </figure>
     </template>
     <script src="./scripts/script.js"></script>
