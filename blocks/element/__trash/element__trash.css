@@ -8,6 +8,7 @@
   top: 20px;
   right: 20px;
   background-image: url(../../../images/Trash.svg);
+  background-repeat: no-repeat;
   object-fit: cover;
   background-size: 18px 19px;
   object-position: center;
