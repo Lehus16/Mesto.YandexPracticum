@@ -9,11 +9,13 @@
   right: 20px;
   background-image: url(../../../images/Trash.svg);
   background-repeat: no-repeat;
-  object-fit: cover;
-  background-size: 18px 19px;
-  object-position: center;
+  background-size: 100% 100%;
   cursor: pointer;
   padding: 0;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 .element__trash:hover {
