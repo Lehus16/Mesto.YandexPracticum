@@ -13,6 +13,7 @@
   background-size: 18px 19px;
   object-position: center;
   cursor: pointer;
+  padding: 0;
 }
 
 .element__trash:hover {
