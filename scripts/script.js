@@ -5,7 +5,7 @@ const elements = document.querySelector('.elements');
 const templateElement = document.querySelector('#element').content;
 // Popup редактирования профиля
 const popupEditProfile = document.querySelector('.popup-edit');
-const EditProfileButton = document.querySelector('.profile__button-edit');
+const buttonOpenEditProfileForm = document.querySelector('.profile__button-edit');
 const popupEditProfileCloseButton = document.querySelector(
   '.popup-edit__button-close'
 );
@@ -15,7 +15,7 @@ const editFormName = document.querySelector('.popup__field_type_name');
 const editFormOccupation = document.querySelector(
   '.popup__field_type_occupation'
 );
-const editForm = document.querySelector('.popup-edit__form');
+const submitEditProfileForm = document.querySelector('.popup-edit__form');
 
 // Popup добавления картинки
 const addElementButton = document.querySelector('.profile__button-add');
@@ -23,7 +23,7 @@ const popupAddElement = document.querySelector('.popup-add');
 const popupAddElementButtonClose = document.querySelector(
   '.popup-add__button-close'
 );
-const addForm = document.querySelector('.popup-add__form');
+const submitAddCardForm = document.querySelector('.popup-add__form');
 const addFormPlace = document.querySelector('.popup__field_type_place-name');
 const addFormUrl = document.querySelector('.popup__field_type_url');
 // Popup картинки
@@ -35,8 +35,11 @@ const popupImageCloseButton = document.querySelector('.popup-image__button');
 // ФУНКЦИИ
 
 // Открытие/закрытие popup.
-const displayPopup = function (element) {
-  element.classList.toggle('popup_hidden');
+const openPopup = function (element) {
+  element.classList.remove('popup_hidden');
+};
+const closePopup = function (element) {
+  element.classList.add('popup_hidden');
 };
 // const popupOpen = function (element) {
 //   element.classList.remove('popup_hidden');
@@ -57,11 +60,11 @@ const createElement = function (element) {
     newElement.remove();
   });
   newElementButton.addEventListener('click', function () {
-    newElementButton.classList.toggle('element__button');
     newElementButton.classList.toggle('element__button-liked');
+  // сам не понял зачем я сделал toggle для двух классов.
   });
   newElementImage.addEventListener('click', function () {
-    displayPopup(popupImage);
+    openPopup(popupImage);
     popupImagePicture.src = element.link;
     popupImageCaption.textContent = element.name;
   });
@@ -80,43 +83,44 @@ const submitAddForm = function (evt) {
   const newCard = { name: addFormPlace.value, link: addFormUrl.value };
   const newElement = createElement(newCard);
   addElement(newElement);
-  displayPopup(popupAddElement);
-  addForm.reset();
+  closePopup(popupAddElement);
+  submitAddCardForm.reset();
 };
 
 // Callback редактирования профиля.
-const submitEditProfileForm = function (evt) {
+const submitEditForm = function (evt) {
   evt.preventDefault();
   currentName.textContent = editFormName.value;
   currentOccupation.textContent = editFormOccupation.value;
-  displayPopup(popupEditProfile);
+  closePopup(popupEditProfile);
 };
 
 
 // Слушатели событий
 
 // Открытие popup с сохранением текущего имени и рода деятельности.
-EditProfileButton.addEventListener('click', function () {
-  displayPopup(popupEditProfile);
+buttonOpenEditProfileForm.addEventListener('click', function () {
+  openPopup(popupEditProfile);
   editFormName.value = currentName.textContent;
   editFormOccupation.value = currentOccupation.textContent;
 });
 
 // Открытие popup
 addElementButton.addEventListener('click', function () {
-  displayPopup(popupAddElement);
+  openPopup(popupAddElement);
 });
 // Добавление нового элемента.
-addForm.addEventListener('submit', submitAddForm);
+submitAddCardForm.addEventListener('submit', submitAddForm);
 // Закрытие popup
 popupAddElementButtonClose.addEventListener('click', function () {
-  displayPopup(popupAddElement);
+  closePopup(popupAddElement);
 });
 popupEditProfileCloseButton.addEventListener('click', function () {
-  displayPopup(popupEditProfile);
+  closePopup(popupEditProfile);
 });
 popupImageCloseButton.addEventListener('click', function () {
-  displayPopup(popupImage);
+  closePopup(popupImage);
 });
 // Submit с именем и родом деятельности.
-editForm.addEventListener('submit', submitEditProfileForm);
+submitEditProfileForm.addEventListener('submit', submitEditForm);
+// Не совсем понял, у меня же уже есть функция submitEditProfileForm
