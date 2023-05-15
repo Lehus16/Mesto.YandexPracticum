@@ -1,0 +1,9 @@
+.element__button-liked {
+  background-image: url(../../../images/BlackLike.svg);
+  min-width: 22px;
+  min-height: 19px;
+  border: none;
+  background-color: initial;
+  cursor: pointer;
+  padding: 0;
+}
