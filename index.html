@@ -44,18 +44,26 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             required
+            minlength="2"
+            maxlength="40"
             class="popup__field popup__field_type_name"
+            id="popup__field_type_name"
             placeholder="Имя"
             type="text"
             name="popup__form_type_name"
           />
+          <span class="popup__error popup__field-span popup__field_type_name-error"></span>
           <input
             required
+            minlength="2"
+            maxlength="200"
             class="popup__field popup__field_type_occupation"
+            id="popup__field_type_occupation"
             placeholder="О себе"
             type="text"
             name="popup__form_type_occupation"
           />
+          <span class="popup__error popup__field-span popup__field_type_occupation-error"></span>
           <button
             aria-label="Сохранить"
             type="submit"
@@ -77,18 +85,24 @@
           <h2 class="popup__title">Новое место</h2>
           <input
             required
+            minlength="2"
+            maxlength="30"
             class="popup__field popup__field_type_place-name"
+            id="popup__field_type_place-name"
             placeholder="Название"
             type="text"
             name="popup__form_type_place-name"
           />
+          <span class="popup__error popup__field-span popup__field_type_place-name-error"></span>
           <input
             required
+            type="url"
             class="popup__field popup__field_type_url"
+            id="popup__field_type_url"
             placeholder="Ссылка на картинку"
-            type="text"
             name="popup__form_type_url"
           />
+          <span class="popup__error popup__field-span popup__field_type_url-error"></span>
           <button
             aria-label="Создать"
             type="submit"
@@ -126,6 +140,7 @@
       </figure>
     </template>
     <script src="./scripts/constatns.js"></script>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

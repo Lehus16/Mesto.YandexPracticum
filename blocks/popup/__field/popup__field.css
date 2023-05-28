@@ -9,10 +9,10 @@
   font-size: 14px;
   line-height: 1.1;
 }
-
 .popup__field:last-of-type {
-  margin-bottom: 48px;
+  margin-top: 18px;
 }
+
 
 .popup__field:focus {
   border: 3px solid rgba(0, 100, 200, .7);
@@ -28,7 +28,6 @@
 
   }
   .popup__field:last-of-type {
-    margin-bottom: 45px;
     margin-top: 27px;
   }
 

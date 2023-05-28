@@ -1,6 +1,6 @@
 .popup__button {
   width: 358px;
-  margin: 0 auto 37px;
+  margin: 18px auto 37px;
   min-height: 50px;
   padding: 0;
   border: none;
@@ -21,6 +21,7 @@
     min-height: 46px;
     width: 238px;
     font-size: 14px;
+    margin-top: 15px;
     margin-bottom: 25px;
   }
 }
