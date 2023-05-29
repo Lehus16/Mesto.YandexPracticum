@@ -9,8 +9,8 @@
   align-items: center;
   background-color: rgba(0, 0, 0, .5);
   z-index: 100;
-  visibility: inherit;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   transition: .5s;
 }
 

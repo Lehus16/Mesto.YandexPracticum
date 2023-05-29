@@ -1,4 +1,4 @@
-.popup__field {
+.popup__input {
   width: 358px;
   margin: 48px 0 0;
   min-height: 27px;
@@ -9,27 +9,26 @@
   font-size: 14px;
   line-height: 1.1;
 }
-.popup__field:last-of-type {
-  margin-top: 18px;
+.popup__input:last-of-type {
+  margin-top: 13px;
 }
 
 
-.popup__field:focus {
+.popup__input:focus {
   border: 3px solid rgba(0, 100, 200, .7);
   border-radius: 2px;
   outline: none;
 }
 
 @media screen and (max-width: 550px) {
-  .popup__field {
+  .popup__input {
     width: 238px;
     min-height: 30px;
     margin-top: 70px;
 
   }
-  .popup__field:last-of-type {
+  .popup__input:last-of-type {
     margin-top: 27px;
   }
 
 }
-

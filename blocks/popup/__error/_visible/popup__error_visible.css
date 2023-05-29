@@ -1,0 +1,13 @@
+.popup__error_visible {
+  color: #F00;
+  font-size: 12px;
+  line-height: 1.25;
+  width: 358px;
+
+}
+
+@media screen and (max-width: 550px) {
+  .popup__error_visible {
+    width: 238px;
+  }
+}

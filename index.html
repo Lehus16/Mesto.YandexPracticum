@@ -38,36 +38,37 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <div class="popup popup-edit popup_hidden">
+    <div class="popup popup-edit">
       <div class="popup__window">
-        <form name="popup-edit" class="popup__form popup-edit__form">
+        <form novalidate name="popup-edit" class="popup__form popup-edit__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             required
             minlength="2"
             maxlength="40"
-            class="popup__field popup__field_type_name"
-            id="popup__field-name"
+            class="popup__input popup__input_type_name"
+            id="popup__input-name"
             placeholder="Имя"
             type="text"
             name="popup__form_type_name"
           />
-          <span class="popup__error popup__field-span popup__field-name-error"></span>
+          <span class=" popup__input-span popup__input-name-error popup__error_visible"></span>
           <input
             required
             minlength="2"
             maxlength="200"
-            class="popup__field popup__field_type_occupation"
-            id="popup__field-occupation"
+            class="popup__input popup__input_type_occupation"
+            id="popup__input-occupation"
             placeholder="О себе"
             type="text"
             name="popup__form_type_occupation"
           />
-          <span class="popup__error popup__field-span popup__field-occupation-error"></span>
+          <span class="popup__error popup__input-span popup__input-occupation-error popup__error_visible"></span>
           <button
+            disabled
             aria-label="Сохранить"
             type="submit"
-            class="popup__button popup__button-save"
+            class="popup__button popup__button-save popup__button_disabled"
           >
             Сохранить
           </button>
@@ -79,34 +80,35 @@
         ></button>
       </div>
     </div>
-    <div class="popup popup-add popup_hidden">
+    <div class="popup popup-add">
       <div class="popup__window">
-        <form name="popup-add" class="popup__form popup-add__form">
+        <form novalidate name="popup-add" class="popup__form popup-add__form">
           <h2 class="popup__title">Новое место</h2>
           <input
             required
             minlength="2"
             maxlength="30"
-            class="popup__field popup__field_type_place-name"
-            id="popup__field-place-name"
+            class="popup__input popup__input_type_place-name"
+            id="popup__input-place-name"
             placeholder="Название"
             type="text"
             name="popup__form_type_place-name"
           />
-          <span class="popup__error popup__field-span popup__field-place-name-error"></span>
+          <span class="popup__error popup__input-span popup__input-place-name-error popup__error_visible"></span>
           <input
             required
             type="url"
-            class="popup__field popup__field_type_url"
-            id="popup__field-url"
+            class="popup__input popup__input_type_url"
+            id="popup__input-url"
             placeholder="Ссылка на картинку"
             name="popup__form_type_url"
           />
-          <span class="popup__error popup__field-span popup__field-url-error"></span>
+          <span class="popup__error popup__input-span popup__input-url-error  popup__error_visible"></span>
           <button
+            disabled
             aria-label="Создать"
             type="submit"
-            class="popup__button popup__button-make"
+            class="popup__button popup__button-make popup__button_disabled"
           >
             Создать
           </button>
@@ -118,7 +120,7 @@
         ></button>
       </div>
     </div>
-    <div class="popup popup-image popup_hidden">
+    <div class="popup popup-image">
       <div class="popup-image__container">
         <img class="popup-image__picture" alt="#" src="#" />
         <p class="popup-image__caption"></p>
@@ -139,7 +141,7 @@
         </figcaption>
       </figure>
     </template>
-    <script src="./scripts/constatns.js"></script>
+    <script src="./scripts/constants.js"></script>
     <script src="./scripts/validation.js"></script>
     <script src="./scripts/script.js"></script>
   </body>

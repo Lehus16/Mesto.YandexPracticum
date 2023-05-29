@@ -1,0 +1,5 @@
+.popup__openned {
+  visibility: inherit;
+  opacity: 1;
+  transition: .5s;
+}
