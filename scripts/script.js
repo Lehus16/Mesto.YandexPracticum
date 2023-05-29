@@ -97,7 +97,8 @@ const submitAddForm = function (evt) {
   const newElement = createElement(newCard);
   addElement(newElement);
   closePopup(popupAddElement);
-  submitAddCardForm.reset();
+  popupAddCardFormButton.disabled = true;
+  popupAddCardFormButton.classList.add('popup__button_disabled');
 };
 
 // Callback редактирования профиля.
@@ -123,6 +124,10 @@ buttonOpenEditProfileForm.addEventListener('click', function () {
 addElementButton.addEventListener('click', function (e) {
   openPopup(popupAddElement);
   submitAddCardForm.reset();
+  // if (!submitAddCardForm.validity.valid) {
+  //   submitAddCardForm.querySelector('.popup__button').disabled = true;
+  //   submitAddCardForm.classList.add('')
+  // }
 });
 // Добавление нового элемента.
 submitAddCardForm.addEventListener('submit', submitAddForm);
