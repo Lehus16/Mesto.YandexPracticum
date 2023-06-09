@@ -40,9 +40,10 @@
     </footer>
     <div class="popup popup-edit">
       <div class="popup__window">
-        <form novalidate name="popup-edit" class="popup__form popup-edit__form">
+        <form autocomplete="off" novalidate name="popup-edit" class="popup__form popup-edit__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
+            autocomplete="off"
             required
             minlength="2"
             maxlength="40"
@@ -54,6 +55,7 @@
           />
           <span class="popup__error popup__input-span popup__input-name-error popup__error_visible"></span>
           <input
+            autocomplete="off"
             required
             minlength="2"
             maxlength="200"
@@ -82,9 +84,10 @@
     </div>
     <div class="popup popup-add">
       <div class="popup__window">
-        <form novalidate name="popup-add" class="popup__form popup-add__form">
+        <form autocomplete="off" novalidate name="popup-add" class="popup__form popup-add__form">
           <h2 class="popup__title">Новое место</h2>
           <input
+            autocomplete="off"
             required
             minlength="2"
             maxlength="30"
@@ -96,6 +99,7 @@
           />
           <span class="popup__error popup__input-span popup__input-place-name-error popup__error_visible"></span>
           <input
+            autocomplete="off"
             required
             type="url"
             class="popup__input popup__input_type_url"

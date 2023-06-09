@@ -108,8 +108,6 @@ const submitEditForm = function (evt) {
   currentOccupation.textContent = editFormOccupation.value;
   closePopup(popupEditProfile);
 };
-// Callback добавления/удаления слушателя открытия/закрытия popup через клавишу Esc
-
 /////////////////////////////////////////////////////////////////////////////////////
 // Слушатели событий
 
