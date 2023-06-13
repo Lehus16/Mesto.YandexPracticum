@@ -1,3 +1,32 @@
+import { Card } from "./Card.js";
+
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+  },
+];
 // Константы DOM.
 // ELEMENTS
 const elements = document.querySelector('.elements');
@@ -36,8 +65,6 @@ const addFormUrl = document.querySelector('.popup__input_type_url');
 const popupAddCardFormButton = document.querySelector('.popup__button-make');
 // Popup картинки
 const popupImage = document.querySelector('.popup-image');
-const popupImagePicture = document.querySelector('.popup-image__picture');
-const popupImageCaption = document.querySelector('.popup-image__caption');
 const popupImageCloseButton = document.querySelector('.popup-image__button');
 /////////////////////////////////////////////////////////////////////////////////////
 // ФУНКЦИИ
@@ -61,45 +88,31 @@ const closePopup = function (element) {
 
 // Создание карточки.
 
-const createElement = function (element) {
-  const newElement = templateElement.querySelector('.element').cloneNode(true);
-  const newElementButton = newElement.querySelector('.element__button');
-  const newElementButtonTrash = newElement.querySelector('.element__trash');
-  const newElementImage = newElement.querySelector('.element__image');
-  newElementImage.src = element.link;
-  newElementImage.alt = element.name;
-  newElement.querySelector('.element__paragraph').textContent = element.name;
-  newElementButtonTrash.addEventListener('click', function () {
-    newElement.remove();
-  });
-  newElementButton.addEventListener('click', function () {
-    newElementButton.classList.toggle('element__button-liked');
-  });
-  newElementImage.addEventListener('click', function () {
-    openPopup(popupImage);
-    popupImagePicture.src = element.link;
-    popupImagePicture.alt = element.name;
-    popupImageCaption.textContent = element.name;
-  });
+// Карточки из массива.
+initialCards.forEach((item) => {
+  const card = new Card(item, templateElement);
 
-  return newElement;
-};
-const addElement = function (element) {
-  elements.prepend(element);
-};
-// 6 картинок из коробки
-initialCards.map(createElement).forEach(addElement);
+  const cardElement = card.generateCard();
 
-// Открытие/закрытие popup добавление картинки.
-const submitAddForm = function (evt) {
-  evt.preventDefault();
-  const newCard = { name: addFormPlace.value, link: addFormUrl.value };
-  const newElement = createElement(newCard);
-  addElement(newElement);
+  elements.prepend(cardElement);
+});
+
+
+// Колбэк добавления новой карточки.
+const submitAddForm = function (e) {
+  e.preventDefault();
+  const newCard = new Card(
+    { name: addFormPlace.value, link: addFormUrl.value },
+    templateElement
+  );
+  const card = newCard.generateCard();
+  elements.prepend(card);
   closePopup(popupAddElement);
   popupAddCardFormButton.disabled = true;
   popupAddCardFormButton.classList.add('popup__button_disabled');
 };
+
+
 
 // Callback редактирования профиля.
 const submitEditForm = function (evt) {
@@ -110,25 +123,22 @@ const submitEditForm = function (evt) {
 };
 /////////////////////////////////////////////////////////////////////////////////////
 // Слушатели событий
+// Добавление новой карточки
+
+submitAddCardForm.addEventListener('submit', submitAddForm);
+
 
 // Открытие popup с сохранением текущего имени и рода деятельности.
 buttonOpenEditProfileForm.addEventListener('click', function () {
   openPopup(popupEditProfile);
-  // editFormName.value = currentName.textContent;
-  // editFormOccupation.value = currentOccupation.textContent;
 });
 // Открытие popup
 
 addElementButton.addEventListener('click', function (e) {
   openPopup(popupAddElement);
   submitAddCardForm.reset();
-  // if (!submitAddCardForm.validity.valid) {
-  //   submitAddCardForm.querySelector('.popup__button').disabled = true;
-  //   submitAddCardForm.classList.add('')
-  // }
 });
-// Добавление нового элемента.
-submitAddCardForm.addEventListener('submit', submitAddForm);
+
 // Закрытие popup
 popupAddElement.addEventListener('click', function (e) {
   if (e.target === popupAddElement || e.target === popupAddElementButtonClose) {
@@ -150,3 +160,5 @@ popupImage.addEventListener('click', function (e) {
 });
 // Submit с именем и родом деятельности.
 submitEditProfileForm.addEventListener('submit', submitEditForm);
+
+
