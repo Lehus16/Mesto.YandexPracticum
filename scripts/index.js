@@ -1,5 +1,5 @@
 import { Card } from "./Card.js";
-
+import {FormValidator} from "./FormValidator.js"
 
 const initialCards = [
   {
@@ -27,6 +27,26 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
   },
 ];
+// Объекто селекторов для валидации форм.
+
+
+const selectorsForValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
+
+
+// Валидация форм.
+Array.from(document.querySelectorAll('.popup__form')).forEach(form => {
+  const validityForm = new FormValidator(selectorsForValidation, form);
+  validityForm.enableValidation(selectorsForValidation);
+});
+
+
 // Константы DOM.
 // ELEMENTS
 const elements = document.querySelector('.elements');
