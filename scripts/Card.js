@@ -1,3 +1,11 @@
+import {
+  escClosePopupHandler,
+  popupImagePicture,
+  popupImage,
+  popupImageCaption,
+  openPopup,
+} from './index.js';
+
 export class Card {
   constructor(data, template) {
     this._name = data.name;
@@ -12,9 +20,9 @@ export class Card {
 
   generateCard() {
     this._card = this._getTemplate();
-
-    this._card.querySelector('.element__image').src = this._link;
-    this._card.querySelector('.element__image').alt = this._name;
+    const cardImage = this._card.querySelector('.element__image');
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
     this._card.querySelector('.element__paragraph').textContent = this._name;
 
     this._setEventListeners();
@@ -50,17 +58,11 @@ export class Card {
     this._card
       .querySelector('.element__image')
       .addEventListener('click', () => {
-        document.querySelector('.popup-image').classList.add('popup__openned');
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') {
-            const currentPopup = document.querySelector('.popup__openned');
-            closePopup(currentPopup);
-          }
-        });
-        document.querySelector('.popup-image__picture').src = this._link;
-        document.querySelector('.popup-image__picture').alt = this._name;
-        document.querySelector('.popup-image__caption').textContent =
-          this._name;
+        openPopup(popupImage);
       });
+
+    popupImagePicture.src = this._link;
+    popupImagePicture.alt = this._name;
+    popupImageCaption.textContent = this._name;
   }
 }

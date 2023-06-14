@@ -1,50 +1,6 @@
 import { Card } from "./Card.js";
 import {FormValidator} from "./FormValidator.js"
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  },
-];
-// Объекто селекторов для валидации форм.
-
-
-const selectorsForValidation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
-
-
-// Валидация форм.
-Array.from(document.querySelectorAll('.popup__form')).forEach(form => {
-  const validityForm = new FormValidator(selectorsForValidation, form);
-  validityForm.enableValidation(selectorsForValidation);
-});
 
 
 // Константы DOM.
@@ -84,19 +40,21 @@ const addFormPlace = document.querySelector('.popup__input_type_place-name');
 const addFormUrl = document.querySelector('.popup__input_type_url');
 const popupAddCardFormButton = document.querySelector('.popup__button-make');
 // Popup картинки
-const popupImage = document.querySelector('.popup-image');
+export const popupImage = document.querySelector('.popup-image');
+export const popupImagePicture = document.querySelector('.popup-image__picture')
+export const popupImageCaption = document.querySelector('.popup-image__caption');
 const popupImageCloseButton = document.querySelector('.popup-image__button');
 /////////////////////////////////////////////////////////////////////////////////////
 // ФУНКЦИИ
 // Открытие/закрытие popup.
-const escClosePopupHandler = function (e) {
+export const escClosePopupHandler = function (e) {
   if (e.key === 'Escape') {
     const currentPopup = document.querySelector('.popup__openned');
     closePopup(currentPopup);
   }
 };
 
-const openPopup = function (element) {
+export const openPopup = function (element) {
   element.classList.add('popup__openned');
   document.addEventListener('keydown', escClosePopupHandler);
 };
@@ -107,6 +65,13 @@ const closePopup = function (element) {
 };
 
 // Создание карточки.
+
+
+// Валидация форм.
+Array.from(document.querySelectorAll('.popup__form')).forEach(form => {
+  const validityForm = new FormValidator(selectorsForValidation, form);
+  validityForm.enableValidation();
+});
 
 // Карточки из массива.
 initialCards.forEach((item) => {
