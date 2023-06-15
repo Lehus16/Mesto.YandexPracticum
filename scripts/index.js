@@ -93,8 +93,9 @@ const submitAddForm = function (e) {
   const card = newCard.generateCard();
   elements.prepend(card);
   closePopup(popupAddElement);
-  popupAddCardFormButton.disabled = true;
-  popupAddCardFormButton.classList.add('popup__button_disabled');
+  const validityForm = new FormValidator(selectorsForValidation, submitAddCardForm);
+  validityForm.enableValidation();
+  validityForm.disableSubmitButton();
 };
 
 

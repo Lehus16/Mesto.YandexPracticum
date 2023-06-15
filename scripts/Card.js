@@ -31,17 +31,22 @@ export class Card {
   }
 
   _setEventListeners() {
+    this._cardButton = this._card.querySelector('.element__button');
     this._card
       .querySelector('.element__trash')
       .addEventListener('click', () => {
         this._cardButtonTrashHandler();
       });
-    this._cardImageHandler();
+
     this._card
-      .querySelector('.element__button')
+      .querySelector('.element__image')
       .addEventListener('click', () => {
-        this._cardLikeButtonHandler();
+        this._cardImageHandler();
       });
+
+    this._cardButton.addEventListener('click', () => {
+      this._cardLikeButtonHandler();
+    });
   }
 
   _cardButtonTrashHandler() {
@@ -49,17 +54,11 @@ export class Card {
   }
 
   _cardLikeButtonHandler(e) {
-    this._card
-      .querySelector('.element__button')
-      .classList.toggle('element__button-liked');
+    this._cardButton.classList.toggle('element__button-liked');
   }
 
   _cardImageHandler() {
-    this._card
-      .querySelector('.element__image')
-      .addEventListener('click', () => {
-        openPopup(popupImage);
-      });
+    openPopup(popupImage);
 
     popupImagePicture.src = this._link;
     popupImagePicture.alt = this._name;
