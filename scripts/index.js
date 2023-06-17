@@ -86,7 +86,6 @@ initialCards.forEach((item) => {
   const card = new Card(item, templateElement);
 
   const cardElement = card.generateCard();
-  // card._cardHover();
 
   elements.prepend(cardElement);
 });

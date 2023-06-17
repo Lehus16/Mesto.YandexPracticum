@@ -30,7 +30,7 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._cardCaption = this._card.querySelector('.element__caption');
+    // this._cardCaption = this._card.querySelector('.element__caption');
     this._cardButton = this._card.querySelector('.element__button');
     this._card
       .querySelector('.element__trash')
