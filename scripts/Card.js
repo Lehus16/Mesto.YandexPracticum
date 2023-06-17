@@ -1,5 +1,4 @@
 import {
-  escClosePopupHandler,
   popupImagePicture,
   popupImage,
   popupImageCaption,
@@ -31,12 +30,24 @@ export class Card {
   }
 
   _setEventListeners() {
+    this._cardCaption = this._card.querySelector('.element__caption');
     this._cardButton = this._card.querySelector('.element__button');
     this._card
       .querySelector('.element__trash')
       .addEventListener('click', () => {
         this._cardButtonTrashHandler();
       });
+
+      // this._card.addEventListener('mouseover', (e) => {
+      //   this._cardCaption.style.top = `${e.offsetY}px`;
+      //   this._cardCaption.style.left = `${e.offsetX}px`;
+      //   this._cardCaption.classList.remove('element__caption-hide');
+      //   this._cardCaption.textContent = this._name;
+      // })
+
+      // this._card.addEventListener('mouseout', (e) => {
+      //   this._cardCaption.classList.add('element__caption-hide');
+      // })
 
     this._card
       .querySelector('.element__image')
@@ -64,4 +75,5 @@ export class Card {
     popupImagePicture.alt = this._name;
     popupImageCaption.textContent = this._name;
   }
+
 }

@@ -5,3 +5,17 @@
   border-radius: 10px;
   background-color: #fff;
 }
+
+/* .element__caption {
+  position: absolute;
+  z-index: 5;
+  line-height: 1.2;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, .6);
+  max-width: 250px;
+  top: 800;
+}
+
+.element__caption-hide {
+  display: none;
+} */

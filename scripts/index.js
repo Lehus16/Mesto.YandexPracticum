@@ -26,9 +26,7 @@ const editFormOccupation = document.querySelector(
   '.popup__input_type_occupation'
 );
 const submitEditProfileForm = document.querySelector('.popup-edit__form');
-/////////////////////////////////////////////////////////////////////////////////////
-// POPUPS
-const popUps = document.querySelectorAll('.popup');
+/////////////////////////////////////////////////////////////////////////////////////;
 // Popup добавления картинки
 const addElementButton = document.querySelector('.profile__button-add');
 const popupAddElement = document.querySelector('.popup-add');
@@ -68,20 +66,30 @@ const closePopup = function (element) {
 
 
 // Валидация форм.
-Array.from(document.querySelectorAll('.popup__form')).forEach(form => {
-  const validityForm = new FormValidator(selectorsForValidation, form);
-  validityForm.enableValidation();
-});
+const addFormValidator = new FormValidator(selectorsForValidation, submitAddCardForm);
+const editFormValidator = new FormValidator(selectorsForValidation, submitEditProfileForm);
+
+const formValidation = function (validator) {
+  validator.enableValidation();
+}
+
+formValidation(addFormValidator);
+formValidation(editFormValidator);
+
+// forms.forEach(form => {
+//   const validityForm = new FormValidator(selectorsForValidation, form);
+//   validityForm.enableValidation();
+// });
 
 // Карточки из массива.
 initialCards.forEach((item) => {
   const card = new Card(item, templateElement);
 
   const cardElement = card.generateCard();
+  // card._cardHover();
 
   elements.prepend(cardElement);
 });
-
 
 // Колбэк добавления новой карточки.
 const submitAddForm = function (e) {
@@ -93,9 +101,7 @@ const submitAddForm = function (e) {
   const card = newCard.generateCard();
   elements.prepend(card);
   closePopup(popupAddElement);
-  const validityForm = new FormValidator(selectorsForValidation, submitAddCardForm);
-  validityForm.enableValidation();
-  validityForm.disableSubmitButton();
+  addFormValidator.disableSubmitButton();
 };
 
 
@@ -129,6 +135,7 @@ addElementButton.addEventListener('click', function (e) {
 popupAddElement.addEventListener('click', function (e) {
   if (e.target === popupAddElement || e.target === popupAddElementButtonClose) {
     closePopup(popupAddElement);
+    addFormValidator.disableSubmitButton();
   }
 });
 popupEditProfile.addEventListener('click', function (e) {
@@ -137,6 +144,8 @@ popupEditProfile.addEventListener('click', function (e) {
     e.target === popupEditProfileCloseButton
   ) {
     closePopup(popupEditProfile);
+    submitEditProfileForm.reset();
+    editFormValidator.disableSubmitButton();
   }
 });
 popupImage.addEventListener('click', function (e) {
