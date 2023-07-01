@@ -1,11 +1,13 @@
-import { initialCards, selectorsForValidation } from '../scripts/constants.js';
-import { Card } from '../scripts/Card.js';
-import { FormValidator } from '../scripts/FormValidator.js';
-import { Section } from '../scripts/Section.js';
-import { Popup } from '../scripts/Popup.js';
-import { PopupWithImage } from '../scripts/PopupWithImage.js';
-import { PopupWithForm } from '../scripts/PopupWithForm.js';
-import { UserInfo } from '../scripts/UserInfo.js';
+import {
+  initialCards,
+  selectorsForValidation,
+} from '../src/utils/constants.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 import './index.css'; // Стили для index.html
 
@@ -19,6 +21,7 @@ const buttonOpenEditProfileForm = document.querySelector(
 );
 
 const submitEditProfileForm = document.querySelector('.popup-edit__form');
+
 /////////////////////////////////////////////////////////////////////////////////////;
 // Popup добавления картинки
 const addElementButton = document.querySelector('.profile__button-add');
@@ -43,16 +46,20 @@ const formValidation = function (validator) {
 formValidation(addFormValidator);
 formValidation(editFormValidator);
 
+const generateCard = function (item) {
+  const card = new Card(item, templateElement, () => {
+    popupWIthImage.open(item);
+  });
+  return card;
+};
+
 const popupWIthImage = new PopupWithImage('.popup-image');
 popupWIthImage.setEventListeners();
 
 const cards = new Section(
   {
-    items: initialCards,
     renderer: function (item) {
-      const card = new Card(item, templateElement, () => {
-        popupWIthImage.open(item);
-      });
+      const card = generateCard(item);
       const cardElement = card.generateCard();
       cards.addItem(cardElement);
     },
@@ -60,16 +67,14 @@ const cards = new Section(
   '.elements'
 );
 
-cards.renderItems();
+cards.renderItems(initialCards);
 
 const popupAddForm = new PopupWithForm('.popup-add', (data) => {
   const item = {
     name: data.popup__form_type_name,
     link: data.popup__form_type_url,
   };
-  const card = new Card(item, templateElement, () => {
-    popupWIthImage.open(item);
-  });
+  const card = generateCard(item);
   const cardElement = card.generateCard();
   cards.addItem(cardElement);
 
@@ -84,8 +89,10 @@ addElementButton.addEventListener('click', () => {
   popupAddForm.open();
 });
 
+const userInfo = new UserInfo('.profile__title', '.profile__paragraph');
+const currentUser = userInfo.getUserInfo();
+
 const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
-  const userInfo = new UserInfo('.profile__title', '.profile__paragraph');
   // const userData = userInfo.getUserInfo();
   const newUserData = {
     name: data.popup__input_type_name,
@@ -99,8 +106,14 @@ const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
 
 popupEditForm.setEventListeners();
 
+// const popupEditNameField = document.querySelector('.popup__input_type_name');
+// const popupEditOccupationField = document.querySelector(
+//   '.popup__input_type_occupation'
+// );
 buttonOpenEditProfileForm.addEventListener('click', (e) => {
   e.preventDefault();
-  editFormValidator.disableSubmitButton();
+
+  // popupEditNameField.value = currentUser.name;
+  // popupEditOccupationField.value = currentUser.about;
   popupEditForm.open();
 });

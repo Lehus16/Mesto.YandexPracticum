@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="../pages/index.css">
   </head>
   <body class="page">
     <header class="header">
@@ -44,7 +43,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <div class="popup popup-edit">
+    <div class="popup popup-edit  popup-overlay">
       <div class="popup__window">
         <form
           autocomplete="off"
@@ -97,7 +96,7 @@
         ></button>
       </div>
     </div>
-    <div class="popup popup-add">
+    <div class="popup popup-add popup-overlay">
       <div class="popup__window">
         <form
           autocomplete="off"
@@ -148,7 +147,7 @@
         ></button>
       </div>
     </div>
-    <div class="popup popup-image">
+    <div class="popup popup-image popup-overlay">
       <div class="popup-image__container">
         <img class="popup-image__picture" alt="#" src="#" />
         <p class="popup-image__caption"></p>
@@ -169,6 +168,6 @@
         </figcaption>
       </figure>
     </template>
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="../pages/index.js"></script>
   </body>
 </html>
