@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css" />
+    <link rel="stylesheet" href="../pages/index.css">
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="images/Logo.svg" alt="логотип" />
+      <!-- <img class="header__logo" src="../images/Logo.svg" alt="логотип" /> -->
+      <img class="header__logo" src="<%=require('../images/Logo.svg')%>" alt="логотип" />
     </header>
     <main class="main">
       <section class="profile">
         <img
           class="profile__image"
-          src="images/Zeus.jpg"
+          src="<%=require('../images/Zeus.jpg')%>"
           alt="Фотография Кусто"
         />
+        <!-- <img
+          class="profile__image"
+          src="../images/Zeus.jpg"
+          alt="Фотография Кусто"
+        /> -->
         <div class="profile__info">
           <h1 class="profile__title">Зевс</h1>
           <button
@@ -40,7 +46,12 @@
     </footer>
     <div class="popup popup-edit">
       <div class="popup__window">
-        <form autocomplete="off" novalidate name="popup-edit" class="popup__form popup-edit__form">
+        <form
+          autocomplete="off"
+          novalidate
+          name="popup-edit"
+          class="popup__form popup-edit__form"
+        >
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             autocomplete="off"
@@ -51,9 +62,11 @@
             id="popup__input-name"
             placeholder="Имя"
             type="text"
-            name="popup__form_type_name"
+            name="popup__input_type_name"
           />
-          <span class="popup__error popup__input-span popup__input-name-error popup__error_visible"></span>
+          <span
+            class="popup__error popup__input-span popup__input-name-error popup__error_visible"
+          ></span>
           <input
             autocomplete="off"
             required
@@ -63,9 +76,11 @@
             id="popup__input-occupation"
             placeholder="О себе"
             type="text"
-            name="popup__form_type_occupation"
+            name="popup__input_type_occupation"
           />
-          <span class="popup__error popup__input-span popup__input-occupation-error popup__error_visible"></span>
+          <span
+            class="popup__error popup__input-span popup__input-occupation-error popup__error_visible"
+          ></span>
           <button
             disabled
             aria-label="Сохранить"
@@ -84,7 +99,12 @@
     </div>
     <div class="popup popup-add">
       <div class="popup__window">
-        <form autocomplete="off" novalidate name="popup-add" class="popup__form popup-add__form">
+        <form
+          autocomplete="off"
+          novalidate
+          name="popup-add"
+          class="popup__form popup-add__form"
+        >
           <h2 class="popup__title">Новое место</h2>
           <input
             autocomplete="off"
@@ -95,9 +115,11 @@
             id="popup__input-place-name"
             placeholder="Название"
             type="text"
-            name="popup__form_type_place-name"
+            name="popup__form_type_name"
           />
-          <span class="popup__error popup__input-span popup__input-place-name-error popup__error_visible"></span>
+          <span
+            class="popup__error popup__input-span popup__input-place-name-error popup__error_visible"
+          ></span>
           <input
             autocomplete="off"
             required
@@ -107,7 +129,9 @@
             placeholder="Ссылка на картинку"
             name="popup__form_type_url"
           />
-          <span class="popup__error popup__input-span popup__input-url-error  popup__error_visible"></span>
+          <span
+            class="popup__error popup__input-span popup__input-url-error popup__error_visible"
+          ></span>
           <button
             disabled
             aria-label="Создать"
@@ -128,12 +152,11 @@
       <div class="popup-image__container">
         <img class="popup-image__picture" alt="#" src="#" />
         <p class="popup-image__caption"></p>
-        <button class="popup__button-close popup-image__button"></button>
+        <button class="popup__button-close popup-image__button-close"></button>
       </div>
     </div>
     <template id="element">
       <figure class="element">
-        <!-- <p class="element__caption element__caption-hide">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem quia nesciunt eveniet, quaerat repellat qui deleniti, ipsa eos dignissimos maxime, culpa a quae! Libero atque sed, soluta voluptate adipisci laudantium.</p> -->
         <button class="element__trash"></button>
         <img class="element__image" />
         <figcaption class="element__footer">
@@ -146,8 +169,6 @@
         </figcaption>
       </figure>
     </template>
-    <script src="./scripts/constants.js"> </script>
-    <script type="module" src="./scripts/index.js"></script>
-
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
