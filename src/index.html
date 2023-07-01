@@ -9,7 +9,11 @@
   <body class="page">
     <header class="header">
       <!-- <img class="header__logo" src="../images/Logo.svg" alt="логотип" /> -->
-      <img class="header__logo" src="<%=require('../images/Logo.svg')%>" alt="логотип" />
+      <img
+        class="header__logo"
+        src="<%=require('../images/Logo.svg')%>"
+        alt="логотип"
+      />
     </header>
     <main class="main">
       <section class="profile">
@@ -43,7 +47,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Alexey Ushakov</p>
     </footer>
-    <div class="popup popup-edit  popup-overlay">
+    <div class="popup popup-edit popup-overlay">
       <div class="popup__window">
         <form
           autocomplete="off"
@@ -81,10 +85,9 @@
             class="popup__error popup__input-span popup__input-occupation-error popup__error_visible"
           ></span>
           <button
-            disabled
             aria-label="Сохранить"
             type="submit"
-            class="popup__button popup__button-save popup__button_disabled"
+            class="popup__button popup__button-save"
           >
             Сохранить
           </button>

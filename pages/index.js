@@ -85,12 +85,12 @@ const popupAddForm = new PopupWithForm('.popup-add', (data) => {
 popupAddForm.setEventListeners();
 
 addElementButton.addEventListener('click', () => {
+  addFormValidator.resetInputsErrors();
   addFormValidator.disableSubmitButton();
   popupAddForm.open();
 });
 
 const userInfo = new UserInfo('.profile__title', '.profile__paragraph');
-const currentUser = userInfo.getUserInfo();
 
 const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
   // const userData = userInfo.getUserInfo();
@@ -100,20 +100,23 @@ const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
   };
   userInfo.setUserInfo(newUserData);
 
-  editFormValidator.disableSubmitButton();
+  // editFormValidator.disableSubmitButton();
   popupEditForm.close();
 });
 
 popupEditForm.setEventListeners();
 
-// const popupEditNameField = document.querySelector('.popup__input_type_name');
-// const popupEditOccupationField = document.querySelector(
-//   '.popup__input_type_occupation'
-// );
+const popupEditNameField = document.querySelector('.popup__input_type_name');
+const popupEditOccupationField = document.querySelector(
+  '.popup__input_type_occupation'
+);
+
 buttonOpenEditProfileForm.addEventListener('click', (e) => {
   e.preventDefault();
-
-  // popupEditNameField.value = currentUser.name;
-  // popupEditOccupationField.value = currentUser.about;
+  // Сначала не понял как это сделать потому что девтулс ругался, а потом каааак понял.
+  editFormValidator.resetInputsErrors();
+  const currentUser = userInfo.getUserInfo();
+  popupEditNameField.value = currentUser.name;
+  popupEditOccupationField.value = currentUser.about;
   popupEditForm.open();
 });

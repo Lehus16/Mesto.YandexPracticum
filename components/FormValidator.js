@@ -16,7 +16,6 @@ export class FormValidator {
   _enableSubmitButton() {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.disabled = false;
-
   }
 
   disableSubmitButton() {
@@ -40,7 +39,7 @@ export class FormValidator {
   }
 
   _hideInputError(inputElement) {
-    // const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElement.classList.remove(this._errorClass);
     this._errorElement.textContent = '';
@@ -64,6 +63,12 @@ export class FormValidator {
         this._isValid(inputElement);
         this._toggleButtonState();
       });
+    });
+  }
+
+  resetInputsErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
     });
   }
 
