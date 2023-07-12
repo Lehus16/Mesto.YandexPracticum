@@ -12,7 +12,7 @@ export class Section {
     });
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(element, method = 'append') {
+    this._container[method](element);
   }
 }

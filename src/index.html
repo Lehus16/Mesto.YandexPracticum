@@ -7,6 +7,9 @@
     <title>Место</title>
   </head>
   <body class="page">
+    <div class="page-overlay">
+      <img class="page-overlay__logo" src="<%=require('../images/Logo.svg')%>" alt="">
+    </div>
     <header class="header">
       <!-- <img class="header__logo" src="../images/Logo.svg" alt="логотип" /> -->
       <img
@@ -17,24 +20,32 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img
-          class="profile__image"
-          src="<%=require('../images/Zeus.jpg')%>"
-          alt="Фотография Кусто"
-        />
+        <div class="profile__image-container">
+          <button class="profile__image-edit"></button>
+          <img
+            src=""
+            class="profile__image"
+            alt="Фотография Кусто"
+          />
+          <!-- <img
+            src="<%=require('../images/Zeus.jpg')%>"
+            class="profile__image"
+            alt="Фотография Кусто"
+          /> -->
+        </div>
         <!-- <img
           class="profile__image"
           src="../images/Zeus.jpg"
           alt="Фотография Кусто"
         /> -->
         <div class="profile__info">
-          <h1 class="profile__title">Зевс</h1>
+          <h1 class="profile__title"></h1>
           <button
             aria-label="Редактировать профиль"
             type="button"
             class="profile__button-edit"
           ></button>
-          <p class="profile__paragraph">Абиссинский кот</p>
+          <p class="profile__paragraph"></p>
         </div>
         <button
           aria-label="Добавить фотографию"
@@ -157,17 +168,60 @@
         <button class="popup__button-close popup-image__button-close"></button>
       </div>
     </div>
+    <div class="popup popup-delete popup-overlay">
+      <div class="popup__window">
+        <form class="popup__form popup-delete__form" name="popup-delete">
+          <h2 class="popup__title popup__delete-title">Вы уверены?</h2>
+          <button class="popup__button" type="submit">Да</button>
+          <button
+            class="popup__button-close popup-image__button-close"
+          ></button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup-avatar popup-overlay">
+      <div class="popup__window">
+        <form class="popup__form popup-avatar__form" name="popup-avatar">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input
+            autocomplete="off"
+            required
+            type="url"
+            class="popup__input"
+            id="popup__input-image-url"
+            placeholder="Ссылка на картинку"
+            name="popup__form_type_avatar"
+          />
+          <span
+            class="popup__error popup__input-span popup__input-image-url-error popup__error_visible"
+          ></span>
+          <button
+            disabled
+            class="popup__button popup__button_disabled"
+            type="submit"
+          >
+            Сохранить
+          </button>
+          <button
+            class="popup__button-close popup-image__button-close"
+          ></button>
+        </form>
+      </div>
+    </div>
     <template id="element">
       <figure class="element">
         <button class="element__trash"></button>
         <img class="element__image" />
         <figcaption class="element__footer">
           <h3 class="element__paragraph"></h3>
-          <button
-            aria-label="Поставить лайк"
-            type="button"
-            class="element__button"
-          ></button>
+          <div class="element__button-container">
+            <button
+              aria-label="Поставить лайк"
+              type="button"
+              class="element__button"
+            ></button>
+            <p class="element__likes">0</p>
+          </div>
         </figcaption>
       </figure>
     </template>

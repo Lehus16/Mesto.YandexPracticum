@@ -1,0 +1,30 @@
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+
+
+  80% {
+    opacity: 1;
+  }
+
+   100% {
+    opacity: 0;
+  }
+}
+
+.page-overlay__logo {
+  width: 560px;
+  position: fixed;
+  margin-top: 300px;
+  opacity: 0;
+  animation: ani 2s infinite linear;
+}
+
+
+@media screen and (max-width: 880px) {
+  .page-overlay__logo {
+    margin-top: 200px;
+    width: 280px;
+  }
+}

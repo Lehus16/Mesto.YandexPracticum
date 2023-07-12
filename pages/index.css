@@ -1,6 +1,8 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/inter.css);
 @import url(../blocks/page/pages.css);
+@import url(../blocks/page-overlay/page-overlay.css);
+@import url(../blocks/page-overlay/__logo/page-overlay__logo.css);
 
 /* HEADER  */
 @import url(../blocks/header/header.css);
@@ -8,12 +10,15 @@
 
 /* PROFILE */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__image-container/profile__image-container.css);
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__paragraph/profile__paragraph.css);
 @import url(../blocks/profile/__button-add/profile__button-add.css);
+@import url(../blocks/profile/__image-edit/profile__image-edit.css);
 @import url(../blocks/profile/__button-edit/profile__button-edit.css);
+
 /* ELEMENTS */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
@@ -23,6 +28,8 @@
 @import url(../blocks/element/__button/element__button.css);
 @import url(../blocks/element/__trash/element__trash.css);
 @import url(../blocks/element/__button-liked/element__button-liked.css);
+@import url(../blocks/element/__button-container/element__button-container.css);
+@import url(../blocks/element/__likes/element__likes.css);
 /* FOOTER */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

@@ -1,0 +1,20 @@
+.page-overlay {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  width: 1280px;
+  height: 1618px;
+  background-color: rgb(0, 0, 0);
+  visibility: visible;
+  opacity: 1;
+  z-index: 99999;
+  transition: .6s
+}
+
+@media screen and (max-width: 1280px) {
+  .page-overlay {
+    width: 100%;
+  }
+}
