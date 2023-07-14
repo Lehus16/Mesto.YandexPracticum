@@ -24,10 +24,17 @@ export class PopupWithForm extends Popup {
       e.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
+    this._submitFormButton.addEventListener('click', (e) => {
+      this._submitFormButton.textContent = 'Сохранение...';
+    });
   }
 
   close() {
     super.close();
     this._form.reset();
+  }
+
+  submitFormButtonTextReset(text) {
+    this._submitFormButton.textContent = text;
   }
 }

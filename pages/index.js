@@ -43,6 +43,13 @@ const submitAddCardForm = document.querySelector('.popup-add__form');
 const buttonOpenEditAvatarForm = document.querySelector('.profile__image-edit');
 const submitEditAvatarForm = document.querySelector('.popup-avatar__form');
 /////////////////////////////////////////////////////////////////////////////////////
+
+const pageOverlay = document.querySelector('.page-overlay');
+setTimeout(() => {
+  pageOverlay.style.opacity = 0;
+  pageOverlay.style.visibility = 'hidden';
+}, 2000);
+
 // Валидация форм
 const addFormValidator = new FormValidator(
   selectorsForValidation,
@@ -66,6 +73,9 @@ formValidation(addFormValidator);
 formValidation(editFormValidator);
 formValidation(editAvatarValidator);
 
+// 229a23af-9dc4-41d6-bbdd-adedac035c83
+// const apiKey = prompt('Введите свой ключ API', '');
+
 // Класс api для запросов на сервер.
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-71',
@@ -75,24 +85,40 @@ const api = new Api({
   },
 });
 
-
-fetch('https://mesto.nomoreparties.co/v1/cohort-71/cards', {
-  method: 'GET',
-  headers: {
-    authorization: '229a23af-9dc4-41d6-bbdd-adedac035c83',
-    'Content-Type': 'application/json',
-  },
-}).then((res) => res.json()).then((result) => {
-  console.log(result)
-})
+// fetch('https://mesto.nomoreparties.co/v1/cohort-71/cards', {
+//   method: 'GET',
+//   headers: {
+//     authorization: '229a23af-9dc4-41d6-bbdd-adedac035c83',
+//     'Content-Type': 'application/json',
+//   },
+// }).then((res) => res.json()).then((result) => {
+//   console.log(result)
+// })
 // Popup с картинкой
 const popupWIthImage = new PopupWithImage('.popup-image');
 popupWIthImage.setEventListeners();
 
+const popupDeleteCard = new PopupWithForm('.popup-delete', () => {});
+popupDeleteCard.setEventListeners();
 const generateCard = function (item) {
-  const card = new Card(item, templateElement, () => {
-    popupWIthImage.open(item);
-  });
+  const card = new Card(
+    item,
+    templateElement,
+    () => {
+      popupWIthImage.open(item);
+    },
+    () => {
+      api.putCardLike(item);
+    },
+    () => {
+      api.deleteCardLike(item);
+    },
+    () => {
+      api.deleteCard(item);
+      popupDeleteCard.close();
+      popupDeleteCard.submitFormButtonTextReset('Да');
+    }
+  );
   return card;
 };
 
@@ -115,6 +141,7 @@ api.getUserInfo().then((result) => {
 
 api.getInitialCards().then((result) => {
   cards.renderItems(result);
+  console.log(result);
 });
 
 // Popup добавления карточки
@@ -123,12 +150,21 @@ const popupAddForm = new PopupWithForm('.popup-add', (data) => {
     name: data.popup__form_type_name,
     link: data.popup__form_type_url,
   };
-  api.postNewCard(item);
-  const card = generateCard(item);
-  const cardElement = card.generateCard();
-  cards.addItem(cardElement, 'prepend');
-  addFormValidator.disableSubmitButton();
-  popupAddForm.close();
+  api
+    .postNewCard(item)
+    .then((result) => {
+      const card = generateCard(result);
+      const cardElement = card.generateCard();
+      cards.addItem(cardElement, 'prepend');
+    })
+
+    .then(() => {
+      addFormValidator.disableSubmitButton();
+      popupAddForm.close();
+    })
+    .finally(() => {
+      popupAddForm.submitFormButtonTextReset('Создать');
+    });
 });
 
 popupAddForm.setEventListeners();
@@ -148,12 +184,19 @@ const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
     about: data.popup__input_type_occupation,
   };
 
-  api.patchUserInfo(newUserData).then((result) => {
-    userInfo.setUserInfo(result);
-  });
+  api
+    .patchUserInfo(newUserData)
+    .then((result) => {
+      userInfo.setUserInfo(result);
+    })
+    .then(() => {
+      popupEditForm.close();
+    })
+    .finally(() => {
+      popupEditForm.submitFormButtonTextReset('Сохранить');
+    });
 
   // editFormValidator.disableSubmitButton();
-  popupEditForm.close();
 });
 
 popupEditForm.setEventListeners();
@@ -171,9 +214,17 @@ const popupAvatarForm = new PopupWithForm('.popup-avatar', (data) => {
   const newAvatarData = {
     avatar: data.popup__form_type_avatar,
   };
-  api.patchUserAvatar(newAvatarData);
-  profileImage.src = newAvatarData.avatar;
-  popupAvatarForm.close();
+  api
+    .patchUserAvatar(newAvatarData)
+    .then((result) => {
+      profileImage.src = result.avatar;
+    })
+    .then(() => {
+      popupAvatarForm.close();
+    })
+    .finally(() => {
+      popupAvatarForm.submitFormButtonTextReset('Сохранить');
+    });
 });
 
 popupAvatarForm.setEventListeners();
@@ -234,10 +285,3 @@ buttonOpenEditAvatarForm.addEventListener('click', (e) => {
 //         });
 //     });
 //   });
-
-const pageOverlay = document.querySelector('.page-overlay');
-
-setTimeout(() => {
-  pageOverlay.style.opacity = 0;
-  pageOverlay.style.visibility = 'hidden';
-}, 2000);

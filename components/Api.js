@@ -1,4 +1,4 @@
-import {Card} from '../components/Card.js';
+import { Card } from '../components/Card.js';
 
 export class Api {
   constructor(options) {
@@ -13,7 +13,15 @@ export class Api {
         authorization: this.autorization,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   patchUserInfo(data) {
@@ -27,7 +35,16 @@ export class Api {
         name: data.name,
         about: data.about,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   patchUserAvatar(data) {
@@ -40,9 +57,17 @@ export class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
-
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
@@ -50,7 +75,16 @@ export class Api {
         authorization: this.autorization,
         'Content-Type': this.contentType,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   postNewCard(data) {
@@ -65,23 +99,71 @@ export class Api {
         link: data.link,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   deleteCard(item) {
     return fetch(`${this.baseUrl}/cards/${item._id}`, {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
         authorization: this.autorization,
         'Content-Type': this.contentType,
       },
-    }).then((res) => res.json())
-    .then((result) => {
-      console.log(result);
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  putCardLike(item) {
+    return fetch(`${this.baseUrl}/cards/${item._id}/likes`, {
+      method: 'PUT',
+      headers: {
+        authorization: this.autorization,
+        'Content-Type': this.contentType,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  deleteCardLike(item) {
+    return fetch(`${this.baseUrl}/cards/${item._id}/likes`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this.autorization,
+        'Content-Type': this.contentType,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 }
-
-// console.log(api)
-
-// console.log(api.postNewCard())
