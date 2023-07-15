@@ -15,4 +15,8 @@ export class Section {
   addItem(element, method = 'append') {
     this._container[method](element);
   }
+
+  removeItem(element) {
+    element.remove();
+  }
 }

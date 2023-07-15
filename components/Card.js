@@ -7,18 +7,16 @@ export class Card {
     handleDeleteLikeClick,
     handleDeleteCardClick
   ) {
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
-    this._owner = data.owner;
     this._cardId = data._id;
-    this._userId = data.owner._id;
     this._template = template;
-    this._handleCardClick = handleCardClick;
+    this._currentUserID = this._handleCardClick = handleCardClick;
     this._handleAddLikeClick = handleAddLikeClick;
     this._handleDeleteLikeClick = handleDeleteLikeClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
-    this._cardDeleteButtonHandler = this._cardDeleteButtonHandler.bind(this);
   }
 
   _getTemplate() {
@@ -34,9 +32,6 @@ export class Card {
     this._card.querySelector('.element__paragraph').textContent = this._name;
     this._cardLikes = this._card.querySelector('.element__likes');
     this._cardLikes.textContent = this._likes.length;
-    this._cardDeletePopup = document.querySelector('.popup-delete');
-    this._cardDeletePopupButton =
-      this._cardDeletePopup.querySelector('.popup__button');
 
     this._setEventListeners();
 
@@ -45,13 +40,13 @@ export class Card {
 
   _setEventListeners() {
     this._cardButton = this._card.querySelector('.element__button');
-    if (this._likes.some((item) => item._id === this._owner._id)) {
+    if (this._likes.some((item) => item._id === this._currentUserID)) {
       this._cardButton.classList.add('element__button-liked');
     }
     this._cardButtonTrash = this._card.querySelector('.element__trash');
-    if (this._userId !== '9476448d60612ba328044f44') {
-      this._cardButtonTrash.remove();
-    }
+    // if (this._userId !== '9476448d60612ba328044f44') {
+    //   this._cardButtonTrash.remove();
+    // }
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick();
     });
@@ -71,48 +66,9 @@ export class Card {
     });
 
     this._cardButtonTrash.addEventListener('click', () => {
-      this._cardButtonTrashHandler();
+      // console.log(this._cardId);
+      // console.log(this._card);
+      this._handleDeleteCardClick(this._cardId, this._card);
     });
   }
-  _cardButtonTrashHandler() {
-    this._cardDeletePopup.classList.add('popup__openned');
-
-    this._cardDeletePopupButton.addEventListener(
-      'click',
-      this._cardDeleteButtonHandler
-    );
-  }
-  _cardDeleteButtonHandler() {
-    this._handleDeleteCardClick();
-    this._card.remove();
-    this._cardDeletePopupButton.removeEventListener(
-      'click',
-      this._cardDeleteButtonHandler
-    );
-  }
-  // _cardLikeButtonHandler() {
-  //   this._cardButton.classList.toggle('element__button-liked');
-  // }
-  // _setEventListeners() {
-  //   // this._cardCaption = this._card.querySelector('.element__caption');
-  //   this._cardButton = this._card.querySelector('.element__button');
-  //
-  //     });
-
-  //   this._card
-  //     .querySelector('.element__image')
-  //     .addEventListener('click', () => {
-  //       this._cardImageHandler();
-  //     });
-
-  //
-  // }
-
-  // _cardImageHandler() {
-  //   openPopup(popupImage);
-
-  //   popupImagePicture.src = this._link;
-  //   popupImagePicture.alt = this._name;
-  //   popupImageCaption.textContent = this._name;
-  // }
 }

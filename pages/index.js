@@ -1,6 +1,18 @@
 import {
-  initialCards,
   selectorsForValidation,
+  templateElement,
+  buttonOpenEditProfileForm,
+  profileImage,
+  profileTitle,
+  profileParagraph,
+  submitEditProfileForm,
+  popupEditNameField,
+  popupEditOccupationField,
+  addElementButton,
+  submitAddCardForm,
+  buttonOpenEditAvatarForm,
+  submitEditAvatarForm,
+  pageOverlay,
 } from '../src/utils/constants.js';
 
 import { Card } from '../components/Card.js';
@@ -8,47 +20,16 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithFormButWithoutInputs } from '../components/PopupWithFormButWithoutInputs.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 import './index.css'; // Стили для index.html
 
-// Константы DOM.
-
-// Template element для создания и добавления новых карточек
-const templateElement = document.querySelector('#element').content;
-
-const elementLikes = document.querySelector('.element__likes');
-// Popup редактирования профиля
-const buttonOpenEditProfileForm = document.querySelector(
-  '.profile__button-edit'
-);
-// Данные профиля
-const profileImage = document.querySelector('.profile__image');
-const profileTitle = document.querySelector('.profile__title');
-const profileParagraph = document.querySelector('.profile__paragraph');
-
-// Popup редактирования профиля
-const submitEditProfileForm = document.querySelector('.popup-edit__form');
-const popupEditNameField = document.querySelector('.popup__input_type_name');
-const popupEditOccupationField = document.querySelector(
-  '.popup__input_type_occupation'
-);
-
-// Popup добавления картинки
-const addElementButton = document.querySelector('.profile__button-add');
-const submitAddCardForm = document.querySelector('.popup-add__form');
-
-// Popup редактирования аватара
-const buttonOpenEditAvatarForm = document.querySelector('.profile__image-edit');
-const submitEditAvatarForm = document.querySelector('.popup-avatar__form');
-/////////////////////////////////////////////////////////////////////////////////////
-
-const pageOverlay = document.querySelector('.page-overlay');
-setTimeout(() => {
-  pageOverlay.style.opacity = 0;
-  pageOverlay.style.visibility = 'hidden';
-}, 2000);
+// setTimeout(() => {
+pageOverlay.style.opacity = 0;
+pageOverlay.style.visibility = 'hidden';
+// }, 2000);
 
 // Валидация форм
 const addFormValidator = new FormValidator(
@@ -85,21 +66,47 @@ const api = new Api({
   },
 });
 
-// fetch('https://mesto.nomoreparties.co/v1/cohort-71/cards', {
-//   method: 'GET',
-//   headers: {
-//     authorization: '229a23af-9dc4-41d6-bbdd-adedac035c83',
-//     'Content-Type': 'application/json',
-//   },
-// }).then((res) => res.json()).then((result) => {
-//   console.log(result)
-// })
+const currentUser = Promise.resolve(api.getUserInfo()).then((result) => {
+  const id = result._id;
+  return id;
+});
+
+// console.log(currentUser);
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    profileImage.src = userData.avatar;
+    profileTitle.textContent = userData.name;
+    profileParagraph.textContent = userData.about;
+    cards.renderItems(cardsData);
+    // console.log(userData);
+    console.log(cardsData);
+  })
+  .catch((err) => {
+    alert('Ошибка: ' + err);
+  });
 // Popup с картинкой
 const popupWIthImage = new PopupWithImage('.popup-image');
 popupWIthImage.setEventListeners();
 
-const popupDeleteCard = new PopupWithForm('.popup-delete', () => {});
+const popupDeleteCard = new PopupWithFormButWithoutInputs(
+  '.popup-delete',
+  (id, element) => {
+    console.log(id);
+    console.log(element);
+    api
+      .deleteCard(id)
+      .then(() => {
+        cards.removeItem(element);
+        popupDeleteCard.close();
+      })
+      .catch((err) => {
+        alert('Ошибка: ' + err);
+      });
+  }
+);
 popupDeleteCard.setEventListeners();
+
 const generateCard = function (item) {
   const card = new Card(
     item,
@@ -108,16 +115,16 @@ const generateCard = function (item) {
       popupWIthImage.open(item);
     },
     () => {
-      api.putCardLike(item);
+      api.putCardLike(item).catch((err) => {
+        alert('Ошибка: ' + err);
+      });
     },
     () => {
-      api.deleteCardLike(item);
+      api.deleteCardLike(item).catch((err) => {
+        alert('Ошибка: ' + err);
+      });
     },
-    () => {
-      api.deleteCard(item);
-      popupDeleteCard.close();
-      popupDeleteCard.submitFormButtonTextReset('Да');
-    }
+    popupDeleteCard.open
   );
   return card;
 };
@@ -132,17 +139,6 @@ const cards = new Section(
   },
   '.elements'
 );
-
-api.getUserInfo().then((result) => {
-  profileImage.src = result.avatar;
-  profileTitle.textContent = result.name;
-  profileParagraph.textContent = result.about;
-});
-
-api.getInitialCards().then((result) => {
-  cards.renderItems(result);
-  console.log(result);
-});
 
 // Popup добавления карточки
 const popupAddForm = new PopupWithForm('.popup-add', (data) => {
@@ -162,6 +158,9 @@ const popupAddForm = new PopupWithForm('.popup-add', (data) => {
       addFormValidator.disableSubmitButton();
       popupAddForm.close();
     })
+    .catch((err) => {
+      alert('Ошибка: ' + err);
+    })
     .finally(() => {
       popupAddForm.submitFormButtonTextReset('Создать');
     });
@@ -178,7 +177,6 @@ addElementButton.addEventListener('click', () => {
 const userInfo = new UserInfo('.profile__title', '.profile__paragraph');
 
 const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
-  // const userData = userInfo.getUserInfo();
   const newUserData = {
     name: data.popup__input_type_name,
     about: data.popup__input_type_occupation,
@@ -191,6 +189,9 @@ const popupEditForm = new PopupWithForm('.popup-edit', (data) => {
     })
     .then(() => {
       popupEditForm.close();
+    })
+    .catch((err) => {
+      alert('Ошибка: ' + err);
     })
     .finally(() => {
       popupEditForm.submitFormButtonTextReset('Сохранить');
@@ -221,6 +222,9 @@ const popupAvatarForm = new PopupWithForm('.popup-avatar', (data) => {
     })
     .then(() => {
       popupAvatarForm.close();
+    })
+    .catch((err) => {
+      alert('Ошибка: ' + err);
     })
     .finally(() => {
       popupAvatarForm.submitFormButtonTextReset('Сохранить');
@@ -285,3 +289,14 @@ buttonOpenEditAvatarForm.addEventListener('click', (e) => {
 //         });
 //     });
 //   });
+
+// const dataAAA = {
+//   name: '111',
+//   link: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Sochi_Marine_passenger_terminal_P5010102_2175.jpg',
+// };
+
+// for (let i = 0; i < 10; i++) {
+//   api.postNewCard(dataAAA);
+// }
+
+// console.log(api.deleteCard())
