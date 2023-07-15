@@ -72,8 +72,8 @@ export class Api {
     }).then((res) => this._responseCheck(res));
   }
 
-  deleteCard(id) {
-    return fetch(`${this.baseUrl}/cards/${id}`, {
+  deleteCard(item) {
+    return fetch(`${this.baseUrl}/cards/${item._id}`, {
       method: 'DELETE',
       headers: {
         authorization: this.autorization,
