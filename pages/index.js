@@ -65,20 +65,16 @@ const api = new Api({
 const currentUser = await api.getUserInfo();
 const cardsData = await api.getInitialCards();
 
-cardsData.forEach((card) => {
-  console.log(card.likes.length);
-});
-
 Promise.all([currentUser, cardsData])
   .then(([userData, cardsData]) => {
     profileImage.src = userData.avatar;
     profileTitle.textContent = userData.name;
     profileParagraph.textContent = userData.about;
     cards.renderItems(cardsData);
-    // setTimeout(() => {
-    //   pageOverlay.style.opacity = 0;
-    //   pageOverlay.style.visibility = 'hidden';
-    // }, 2000);
+    setTimeout(() => {
+      pageOverlay.style.opacity = 0;
+      pageOverlay.style.visibility = 'hidden';
+    }, 2000);
   })
   .catch((err) => {
     alert('Ошибка: ' + err);
@@ -115,17 +111,22 @@ const generateCard = function (item) {
     () => {
       api
         .putCardLike(item)
-        .then(() => {
-          card.setLikes();
+        .then((res) => {
+          card.setLikes(res.likes.length);
         })
         .catch((err) => {
           alert('Ошибка: ' + err);
         });
     },
     () => {
-      api.deleteCardLike(item).catch((err) => {
-        alert('Ошибка: ' + err);
-      });
+      api
+        .deleteCardLike(item)
+        .then((res) => {
+          card.setLikes(res.likes.length);
+        })
+        .catch((err) => {
+          alert('Ошибка: ' + err);
+        });
     },
     popupDeleteCard.open.bind(popupDeleteCard),
     currentUser

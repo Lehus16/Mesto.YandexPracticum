@@ -1,3 +1,5 @@
+import { _ } from 'core-js';
+
 export class Card {
   constructor(
     data,
@@ -56,14 +58,10 @@ export class Card {
     });
 
     this._cardButton.addEventListener('click', () => {
-      if (this._cardButton.classList.contains('element__button-liked')) {
-        this._cardButton.classList.remove('element__button-liked');
-        this._cardLikes.textContent = parseInt(this._cardLikes.textContent) - 1;
+      if (this._likeButtonStateCheck()) {
         this._handleDeleteLikeClick();
       } else {
         this._handleAddLikeClick();
-        this._cardButton.classList.add('element__button-liked');
-        this._cardLikes.textContent = parseInt(this._cardLikes.textContent) + 1;
       }
     });
 
@@ -72,5 +70,18 @@ export class Card {
     });
   }
 
- 
+  _likeButtonStateCheck() {
+    return this._cardButton.classList.contains('element__button-liked');
+  }
+
+  setLikes(likes) {
+    this._likes = likes;
+    if (this._likeButtonStateCheck()) {
+      this._cardButton.classList.remove('element__button-liked');
+      this._cardLikes.textContent = parseInt(this._cardLikes.textContent) - 1;
+    } else {
+      this._cardButton.classList.add('element__button-liked');
+      this._cardLikes.textContent = parseInt(this._cardLikes.textContent) + 1;
+    }
+  }
 }
