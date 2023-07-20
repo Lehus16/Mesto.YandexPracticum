@@ -25,8 +25,7 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 import './index.css'; // Стили для index.html
-pageOverlay.style.opacity = 0;
-pageOverlay.style.visibility = 'hidden';
+
 // Валидация форм
 const addFormValidator = new FormValidator(
   selectorsForValidation,
@@ -74,7 +73,7 @@ Promise.all([currentUser, cardsData])
     setTimeout(() => {
       pageOverlay.style.opacity = 0;
       pageOverlay.style.visibility = 'hidden';
-    }, 2000);
+    }, 1000);
   })
   .catch((err) => {
     alert('Ошибка: ' + err);
